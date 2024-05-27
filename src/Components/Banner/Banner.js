@@ -25,7 +25,7 @@ const slides = [
   }
 ];
 
-const Hero = () => {
+const Banner = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -45,7 +45,7 @@ const Hero = () => {
   }, [currentSlide]);
   
   return (
-    <div className="hero-section">
+    <div className="banner-section">
     <button className="arrow back" onClick={goToPrevSlide}>
       <div className="arrow-box">
         <IoIosArrowBack />
@@ -80,4 +80,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default Banner
