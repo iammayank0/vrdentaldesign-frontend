@@ -1,235 +1,146 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+
+.contact-info {
+  height: 4rem;
+  display: grid;
+  grid-template-columns: 7rem 2fr 2fr 7rem;
+  align-items: center;
+  font-size: 15px;
+}
+
+.info {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.icon{
+  margin: 0 10px;
+}
+
+.info h3 {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.social {
+  grid-column: 3/4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.social a {
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (max-width: 1000px) {
+  .social {
+    display: none;
   }
-  
-  body {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    height: 100vh;
-    color: #fff; 
+
+  .info {
+    grid-column: 1/-1;
+    font-size: 12px;
+    justify-content: center; 
   }
-  
-  a {
-    text-decoration: none;
-    color: #fff; 
+}
+
+.main-nav{
+  width: 100%;
+  height: 4.5rem;
+  display: grid;
+  grid-template-columns: 7rem 0.4fr 2fr 7rem;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.104);
+}
+
+.logo{
+  grid-column: 2/3;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.logo img {
+  width: 8rem; 
+  height: 4rem; 
+} 
+
+.menu-link {
+  grid-column: 3/4;
+  font-size: 20px;
+}
+
+.menu-link ul{
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu-link a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-link a:hover {
+  color: #ddd;
+}
+
+
+.menu-icons {
+  grid-column: 3/4;
+  display: none;
+  justify-self: end;
+  align-items: center;
+}
+
+.menu-icons svg {
+  width: 25px; 
+  height: 25px; 
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .menu-link {
+    display: none; 
   }
-  
-  li {
-    list-style: none;
+
+  .menu-icons {
+    display: block; 
   }
-  
-  .contact-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-left: 120px;
-    margin-right: 120px;
-  }
-  
-  .info, .social {
-    display: flex;
-    align-items: center;
-  }
-  
-  .social .icon{
-    font-size: 1.5rem;
-    margin-left: 10px;
-  }
-  
-  .info h3 {
-    margin: 10px;
-    font-weight: 100;
-    color: #fff; 
-  }
-  
-  .icon {
-    margin-right: 8px;
-    color: #fff; 
-  }
-  
-  .main-nav {
-    display: flex;
-    height: 85.5px;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 900;
-    background-color: rgba(249, 246, 246, 0.084);
-    padding: 10px 120px;
-  }
-  
-  .logo h2 {
-    margin: 0;
-    color: #fff;
-  }
-  
-  .menu-link ul {
-    display: flex;
-    gap: 30px; 
-    list-style: none;
-    padding: 0;
-  }
-  
-  
-  .menu-link li {
-    display: inline;
-  }
-  
-  
-  .menu-link a {
-    text-decoration: none;
-    color: #fff;
-  }
-  
-  .menu-link a:hover {
-    color: #ddd;
-  }
-  
-  .hero-section {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      z-index: 1000; 
-      overflow: hidden;
-    }
-    
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 20px;
-      background-size: cover;
-      background-position: center;
-    }
-    
-    .arrow-box {
-      width: 40px; 
-      height: 40px; 
-      background-color: white;
-      border-radius: 0%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .arrow-box:hover {
-      background-color: #f80505;
-      color: black;
-    }
-    
-    .arrow-box svg {
-      font-size: 24px; 
-    }
-  
-    .main-banner{
-      margin-left: 100px;
-      margin-bottom: 300px;
-    }
-  
-    .text {
-      max-width: 640px;
-      overflow: hidden;
-      padding-bottom: 20px;
-      margin-top: 120px;
-    }
-  
-   
-    
-    .slide button {
-        height: 50px;
-        width: 180px;
-        border-radius: 50px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #c03535e2;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-        white-space: nowrap;
-        font-size: 15px;
-        font-weight: 600;
-      }
-      
-      .icon-circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 15px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: #3f41bff0;
-        color: #ffffff;
-      }
-      
-      .slide button:hover {
-        background-color: #ffffff;
-        color: #3f41bff0;
-      }
-      
-      .slide button:hover .icon-circle {
-        background-color: #fc0808;
-        color: #fbfafa;
-      }
-      
-    .slide h5 {
-      color: #ffffff;
-      margin-bottom: 10px;
-    }
-    
-    .slide h1 {
-      font-size: 60px;
-      color: #ffffff;
-      margin-bottom: 20px;
-      font-weight: 1000;
-    }
-    
-    .slide p {
-      font-size: 18px;
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
-    
-    .slide.active {
-      opacity: 1;
-    }
-    
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      z-index: 1;
-      padding: 15px; 
-    }
-    
-    .arrow.back {
-      left: 10px; 
-    }
-    
-    .arrow.forward {
-      right: 10px; 
-    }
-    
-    .arrow svg {
-      font-size: 24px; 
-    }
-    
+}
+
+.menu-link.open {
+  display: grid; 
+  grid-row: inherit;
+  animation: slideDown 0.5s ease-in-out;
+  background-color: #fff;
+}
+
+.menu-link.open a{
+  color: black;
+}
+
+
+
+
+
+
