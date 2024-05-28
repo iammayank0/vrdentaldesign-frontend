@@ -34,10 +34,10 @@ const Form = () => {
             <div className="separator">|</div>
             <input type="text" placeholder="Message" required />
           </div>
-          <div className="button">
+          <div className="enquiry-button">
             <button type="submit" className="submit-button">
               SEND ENQUIRY
-              <span className="icon-circle"><FaArrowRight /></span>
+              <span className="icon--circle"><FaArrowRight /></span>
             </button>
           </div>
         </form>

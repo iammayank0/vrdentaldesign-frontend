@@ -82,13 +82,13 @@ input[type="text"], input[type="email"], input[type="number"] {
     pointer-events: none;
 }
 
-.button {
+.enquiry-button {
     margin-top: 20px;
     display: flex;
     justify-content: center; /* Center button horizontally */
 }
 
-.button button {
+.enquiry-button button {
     height: 50px;
     width: 190px;
     border-radius: 50px;
@@ -105,7 +105,7 @@ input[type="text"], input[type="email"], input[type="number"] {
     position: relative;
 }
 
-.icon-circle {
+.icon--circle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -117,12 +117,12 @@ input[type="text"], input[type="email"], input[type="number"] {
     color: #ffffff;
 }
 
-button:hover {
+.enquiry-button button:hover {
     background-color: #3914f6;
     color: rgb(255, 255, 255);
 }
 
-button:hover .icon-circle {
+.enquiry-button button:hover .icon--circle {
     background-color: #f8f6fb;
     color: #4d08ed;
 }
