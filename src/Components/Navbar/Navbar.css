@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-a {
+.social a {
   text-decoration: none;
 }
 
@@ -26,9 +26,10 @@ li {
   display: flex;
   justify-content: start;
   align-items: center;
+  color: white;
 }
 
-.icon{
+ .icon{
   margin: 0 10px;
 }
 
@@ -101,7 +102,7 @@ li {
 }
 
 .menu-link a:hover {
-  color: #ddd;
+  color: #c7b8b8;
 }
 
 
