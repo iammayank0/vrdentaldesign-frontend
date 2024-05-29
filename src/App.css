@@ -22,5 +22,11 @@ body {
   .background3 {
     background-image: url('./Assets/images/main-banner-image/3.jpg');
   }
+
+  @media (max-width: 575px) {
+    html{
+      width: 95vh;
+    }
+  }
   
   

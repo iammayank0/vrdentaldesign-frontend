@@ -65,24 +65,24 @@ const Main = () => {
     </button>
 
     {slides.map((slide, index) => (
-      <div
-        key={index}
-        className={`slide ${index === currentSlide ? 'active' : ''} 
-                    ${index === 0 ? '.slide1' : ''} 
-                    ${index === 1 ? '.slide2' : ''} 
-                    ${index === 2 ? '.slide3' : ''}`}
-      >
-        <div className="main-banner">
-          <div className="text">
-            <h5>{slide.title}</h5>
-            <h1>{slide.heading}</h1>
-            <p>{slide.description}</p>
-            <div className="button"><button> KNOW MORE<span className="icon-circle"> <FaArrowRight /></span></button></div>
-          </div>
+  <div
+    key={index}
+    className={`slide ${index === currentSlide ? 'active' : ''} slide${index + 1}`}
+  >
+    <div className="main-banner">
+      <div className="text">
+        <h5>{slide.title}</h5>
+        <h1>{slide.heading}</h1>
+        <p>{slide.description}</p>
+        <div className="button">
+          <button> KNOW MORE<span className="icon-circle"><FaArrowRight /></span></button>
         </div>
       </div>
-    ))}
+    </div>
   </div>
+))}
+
+    </div>
 
    {/* form */}
 
@@ -173,6 +173,47 @@ const Main = () => {
 
 
     {/* Fun Facts Area */}
+
+    <section className="factArea">
+      <div className="container-fact">
+        <div className="content-fact">
+          <div className="fact-text">
+            <span className='fun-title'>FUN FACTS</span>
+            <h2>Learn More About Our Success Stories</h2>
+          </div>
+          <div className="fact-num">
+            <div className="single-funFact">
+              <h3>
+                <span className="odometer-digit">120</span>
+                <sup>+</sup>
+              </h3>
+              <p>Happy Labs</p>
+            </div>
+            <div className="single-funFact">
+              <h3>
+                <span className="odometer-digit">60</span>
+                <sup>+</sup>
+              </h3>
+              <p>Expert Doctors</p>
+            </div>
+            <div className="single-funFact">
+              <h3>
+                <span className="odometer-digit">600,000</span>
+                <sup>+</sup>
+              </h3>
+              <p>Cases Resolved</p>
+            </div>
+            <div className="single-funFact">
+              <h3>
+                <span className="odometer-digit">18</span>
+                <sup>+</sup>
+              </h3>
+              <p>Award Winners</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
     </div>

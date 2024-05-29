@@ -53,7 +53,8 @@
   margin-top: 120px;
 }
 
-.button button {
+.slide .text .button button {
+  /* Add your button styles here */
   height: 50px;
   width: 180px;
   border-radius: 50px;
@@ -68,8 +69,14 @@
   font-size: 15px;
   font-weight: 600;
   position: relative;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
+
+.slide button:hover {
+  background-color: #ffffff;
+  color: rgb(182, 68, 68);
+}
+
 
 .icon-circle {
   display: inline-flex;
@@ -83,15 +90,26 @@
   color: #ffffff;
 }
 
-.slide .text button:hover {
-  background-color: #ffffff;
-  color: rgb(182, 68, 68);
+.slide {
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
-.slide .text button:hover .icon-circle {
+.slide.active {
+  opacity: 1;
+}
+
+.slide .text button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.slide button:hover .icon-circle {
   background-color: #fc0808;
   color: #fbfafa;
 }
+
+
 
 .text h5 {
   color: #ffffff;
@@ -111,9 +129,6 @@
   margin-bottom: 20px;
 }
 
-.slide.active {
-  opacity: 1;
-}
 
 .arrow {
   position: absolute;
@@ -158,7 +173,7 @@
   z-index: 1;
 }
 
-h2{
+.about-content h2{
   font-size: 40px;
   margin-bottom: 20px;
   color: #1d3557;
@@ -271,13 +286,13 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 @media (min-width: 1400px) {
-  .container, .container-about {
+  .container, .container-about, .container-fact {
       max-width: 1700px; 
   }
 }
 
 @media (min-width: 1250px) {
-  .container, .container-about {
+  .container, .container-about, .container-fact {
       max-width: 1500px;  
   }
 
@@ -292,7 +307,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 @media (min-width: 992px) {
-  .container, .container-about {
+  .container, .container-about, .container-fact {
       max-width: 1300px; 
   }
 
@@ -300,7 +315,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .container, .container-about {
+  .container, .container-about, .container-fact {
       max-width: 1100px;  
   }
 
@@ -310,8 +325,9 @@ input[type="text"], input[type="email"], input[type="number"] {
   }
 }
 
+
 @media (max-width: 767px) {
-  .container, .container-about {
+  .container, .container-about, .container-fact {
       max-width: 800px;  
   }
 
@@ -319,7 +335,20 @@ input[type="text"], input[type="email"], input[type="number"] {
     flex: 1 1 100%;
     max-width: 100%;
   }
+
 }
+
+@media (max-width: 575px) {
+  .container, .container-about, .container-fact {
+      max-width: 600px;  
+  }
+
+  .content-image, .about-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
 
 .about-area {
   color: black;
@@ -399,3 +428,55 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 
+/* Fun Fact Area */
+
+.factArea{
+  background-color: #043d72;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.container-fact {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto; 
+}
+
+.content-fact{
+  align-items: center !important;
+  display: grid;
+  grid-template-columns: 0.5rem 1.9fr 2fr 0.5rem ;
+}
+
+.fact-text{
+  padding-right: 12px;
+  grid-column: 2/3;
+}
+
+.fact-text h2{
+  font-size: 42px;
+}
+
+.fact-num{
+  grid-column: 3/4;
+  padding-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fact-num h3{
+  font-size: 39px;
+}
+
+.single-funFact {
+  margin-right: 40px; 
+  margin-bottom: 20px;
+}
+
+.single-funFact:last-child {
+  margin-right: 0;
+}
+
+.single-funFact:nth-child(4n) {
+  margin-bottom: 0;
+}
