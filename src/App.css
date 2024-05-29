@@ -1,16 +1,14 @@
 
-/* Rest of your existing CSS */
 
 body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    height: 115vh;
+    height: 170vh;
     color: #fff;
   }
   
-  /* Add background images to body */
   .background1 {
     background-image: url('./Assets/images/main-banner-image/1.jpg');
   }
@@ -23,10 +21,8 @@ body {
     background-image: url('./Assets/images/main-banner-image/3.jpg');
   }
 
-  @media (max-width: 575px) {
+  @media (max-width: 600px) {
     html{
-      width: 95vh;
+      width: fit-content;
     }
   }
-  
-  

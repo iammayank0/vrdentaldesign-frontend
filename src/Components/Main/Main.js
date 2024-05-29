@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Main.css'
 
-import { FaArrowRight, FaCheck } from "react-icons/fa";
+import { FaArrowRight, FaCheck, FaLongArrowAltRight } from "react-icons/fa";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiUser, CiMail, CiPhone } from "react-icons/ci";
 import { RiMessage2Line } from "react-icons/ri";
 import img1 from "../../Assets/images/about-img.jpg";
 // import img2 from "../../Assets/images/about-img1.jpg";
 import signImage from "../../Assets/images/signature.png";
+import serviceImg1 from "../../Assets/images/doctor-image/1.jpg";
+import serviceImg2 from "../../Assets/images/doctor-image/2.jpg";
+import serviceImg3 from "../../Assets/images/doctor-image/3.jpg";
+import serviceImg4 from "../../Assets/images/doctor-image/4.jpg";
 
 const slides = [
   {
@@ -219,9 +223,9 @@ const Main = () => {
 
     <section className='services-area'>
       <div className="container-services">
-        <div className='services-area'>
+        <div className='service-area'>
           <div className="service-content">
-            <span>OUR SPECIALISATION</span>
+            <span className='service-title'>OUR SPECIALISATION</span>
             <h2>Catering to all of your Dental needs and Desires</h2>
             <p>The concept of VR Dental Design arose from the need to address the challenges of all modern dentists.</p>
             <p>✅ High quality designs across a range of dental CAD products</p>
@@ -231,14 +235,30 @@ const Main = () => {
             <div className="learnMore-button">
             <button type="submit" className="learn-more-button">
               LEARN MORE
-              <span className="icon--circle"><FaArrowRight /></span>
+              <span className="icon-circle"><FaArrowRight /></span>
             </button>
           </div>
           </div>
           <div className="service-img">
             <div className="single-service-box">
-              <img src="" alt="" />
+              <img src={serviceImg1} alt="serviceImg1" />
               <h3>VALPLAST FLEXIBLE</h3>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+            </div>
+            <div className="single-service-box">
+              <img src={serviceImg2} alt="serviceImg2" />
+              <h3>COSMETIC DENTISTRY</h3>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+            </div>
+            <div className="single-service-box">
+              <img src={serviceImg3} alt="serviceImg13" />
+              <h3>INLAY ONLAY</h3>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+            </div>
+            <div className="single-service-box">
+              <img src={serviceImg4} alt="serviceImg4" />
+              <h3>VENEER</h3>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
             </div>
           </div>
         </div>

@@ -1,9 +1,11 @@
+
 .banner-section {
   position: relative;
-  width: 100%;
-  height: 100vh;
+  height: 120vh;
   z-index: 1000; 
   overflow: hidden;
+  display: flex;
+  align-items: center; /* Center vertically */
 }
 
 .slide {
@@ -42,19 +44,23 @@
 }
 
 .main-banner {
-  margin-left: 100px;
-  margin-bottom: 300px;
+  width: 100%;
+  height: auto; /* Change height to auto */
+  padding-right: .75rem;
+  padding-left: .75rem;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.text {
-  max-width: 650px;
+
+.text{
+  max-width: 640px;
   overflow: hidden;
   padding-bottom: 20px;
-  margin-top: 120px;
+  margin-top: 30px;
 }
 
 .slide .text .button button {
-  /* Add your button styles here */
   height: 50px;
   width: 180px;
   border-radius: 50px;
@@ -117,7 +123,7 @@
 }
 
 .text h1 {
-  font-size: 60px;
+  font-size: 50px;
   color: #ffffff;
   margin-bottom: 20px;
   font-weight: 1000;
@@ -160,7 +166,7 @@
   box-sizing: border-box;
 }
 
-.container, .about {
+.container{
   position: relative;
   border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0);
@@ -169,7 +175,6 @@
   padding-left: 12px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: -125px; 
   z-index: 1;
 }
 
@@ -285,70 +290,7 @@ input[type="text"], input[type="email"], input[type="number"] {
   color: #4d08ed;
 }
 
-@media (min-width: 1400px) {
-  .container, .container-about, .container-fact {
-      max-width: 1700px; 
-  }
-}
-
-@media (min-width: 1250px) {
-  .container, .container-about, .container-fact {
-      max-width: 1500px;  
-  }
-
-  .about-content h2 {
-    font-size: 2rem;
-  }
-
-  .content-image, .about-content {
-    flex: 1 1 50%;
-    max-width: 50%;
-  }
-}
-
-@media (min-width: 992px) {
-  .container, .container-about, .container-fact {
-      max-width: 1300px; 
-  }
-
-  
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  .container, .container-about, .container-fact {
-      max-width: 1100px;  
-  }
-
-  .content-image, .about-content {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
-
-@media (max-width: 767px) {
-  .container, .container-about, .container-fact {
-      max-width: 800px;  
-  }
-
-  .content-image, .about-content {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-
-}
-
-@media (max-width: 575px) {
-  .container, .container-about, .container-fact {
-      max-width: 600px;  
-  }
-
-  .content-image, .about-content {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
-}
-
+/* About area */
 
 .about-area {
   color: black;
@@ -427,6 +369,18 @@ input[type="text"], input[type="email"], input[type="number"] {
   padding-top: 20px;
 }
 
+@media (max-width: 1199px) {
+  .content-image {
+    text-align: center;
+    padding-left: 0; 
+  }
+  
+  .image-before {
+    display: inline-block;
+    margin: 0 auto; 
+  }
+}
+
 
 /* Fun Fact Area */
 
@@ -479,4 +433,170 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 .single-funFact:nth-child(4n) {
   margin-bottom: 0;
+}
+
+/* Service area */
+
+.services-area{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.container-services {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.service-area{
+  align-items: center !important;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.service-title{
+  display: block;
+  color: #df3946;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.service-content h2{
+  margin-bottom: 14px;
+  line-height: 1.3;
+  font-size: 42px;
+  font-weight: 400;
+  color: #1d3557;
+}
+
+.service-content p{
+  color: #6d7a8c;
+  line-height: 1.8;
+  margin-bottom: 12px;
+  font-size: 16.5px;
+}
+
+
+.services-area img{
+  width: 313px;
+  height: 180px;
+}
+
+.learnMore-button button{
+  height: 50px;
+  width: 190px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c03535e2;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  position: relative;
+}
+
+.learnMore-button button:hover {
+  background-color: #3914f6;
+  color: rgb(255, 255, 255);
+}
+
+.learnMore-button button:hover .icon-circle {
+  background-color: #f8f6fb;
+  color: #4d08ed;
+}
+
+
+
+
+
+
+
+@media (min-width: 992px) {
+  .service-area {
+      flex: 0 0 auto;
+      width: 41.66666667%;
+  }
+}
+@media (min-width: 768px) {
+  .service-area {
+      flex: 0 0 auto;
+      width: 100%;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 1700px; 
+  }
+}
+
+@media (min-width: 1250px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 1500px;  
+  }
+
+  .content-image{
+    justify-content: center;
+  }
+
+  .about-content h2 {
+    font-size: 2rem;
+  }
+
+  .content-image, .about-content {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 1300px; 
+  }
+
+  
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 1100px;  
+  }
+
+  .content-image, .about-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 800px;  
+  }
+
+  .content-image, .about-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+}
+
+@media (max-width: 575px) {
+  .container, .main-banner, .container-about, .container-fact, .container-services {
+      max-width: 600px;  
+  }
+
+  .content-image, .about-content {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

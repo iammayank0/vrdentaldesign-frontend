@@ -11,8 +11,6 @@ a {
 li {
   list-style: none;
 }
-
-
 .contact-info {
   height: 4rem;
   display: grid;
@@ -118,7 +116,7 @@ li {
   cursor: pointer;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1020px) {
   .menu-link {
     display: none; 
   }
@@ -128,7 +126,19 @@ li {
   }
 }
 
-.menu-link.open {
+
+@media (max-width: 1300px) {
+  .main-nav {
+    grid-template-columns: 1rem 0.4fr 2fr 1rem; 
+  }
+
+  .menu-link {
+    font-size: 15px;
+  }
+
+}
+
+/* .menu-link.open {
   display: grid; 
   grid-row: inherit;
   animation: slideDown 0.5s ease-in-out;
@@ -137,7 +147,7 @@ li {
 
 .menu-link.open a{
   color: black;
-}
+} */
 
 
 
