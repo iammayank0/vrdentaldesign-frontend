@@ -2,22 +2,25 @@
 /* Rest of your existing CSS */
 
 body {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  height: 100vh;
-}
-
-/* Add background images to body */
-.background1 {
-  background-image: url('./Assets/images/main-banner-image/1.jpg');
-}
-
-.background2 {
-  background-image: url('./Assets/images/main-banner-image/2.jpg');
-}
-
-.background3 {
-  background-image: url('./Assets/images/main-banner-image/3.jpg');
-}
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 115vh;
+    color: #fff;
+  }
+  
+  /* Add background images to body */
+  .background1 {
+    background-image: url('./Assets/images/main-banner-image/1.jpg');
+  }
+  
+  .background2 {
+    background-image: url('./Assets/images/main-banner-image/2.jpg');
+  }
+  
+  .background3 {
+    background-image: url('./Assets/images/main-banner-image/3.jpg');
+  }
+  
+  
