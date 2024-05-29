@@ -215,6 +215,36 @@ const Main = () => {
       </div>
     </section>
 
+    {/* Services Area */}
+
+    <section className='services-area'>
+      <div className="container-services">
+        <div className='services-area'>
+          <div className="service-content">
+            <span>OUR SPECIALISATION</span>
+            <h2>Catering to all of your Dental needs and Desires</h2>
+            <p>The concept of VR Dental Design arose from the need to address the challenges of all modern dentists.</p>
+            <p>✅ High quality designs across a range of dental CAD products</p>
+            <p>✅ Fast and reliable delivery with customized solutions</p>
+            <p>✅ No need to invest in CAD design software and team</p>
+            <p>✅ Live support to resolve your issues effectively and quickly</p>
+            <div className="learnMore-button">
+            <button type="submit" className="learn-more-button">
+              LEARN MORE
+              <span className="icon--circle"><FaArrowRight /></span>
+            </button>
+          </div>
+          </div>
+          <div className="service-img">
+            <div className="single-service-box">
+              <img src="" alt="" />
+              <h3>VALPLAST FLEXIBLE</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     </div>
   )
