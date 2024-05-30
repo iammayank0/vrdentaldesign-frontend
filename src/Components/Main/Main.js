@@ -233,32 +233,32 @@ const Main = () => {
             <p>✅ No need to invest in CAD design software and team</p>
             <p>✅ Live support to resolve your issues effectively and quickly</p>
             <div className="learnMore-button">
-            <button type="submit" className="learn-more-button">
-              LEARN MORE
-              <span className="icon-circle"><FaArrowRight /></span>
-            </button>
-          </div>
+              <button type="button" className="learn-more-button">
+                LEARN MORE
+                <span className="icon-circle"><FaArrowRight /></span>
+              </button>
+            </div>
           </div>
           <div className="service-img">
             <div className="single-service-box">
-              <img src={serviceImg1} alt="serviceImg1" />
+              <img src={serviceImg1} alt="VALPLAST FLEXIBLE" />
               <h3>VALPLAST FLEXIBLE</h3>
-              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg2} alt="serviceImg2" />
+              <img src={serviceImg2} alt="COSMETIC DENTISTRY" />
               <h3>COSMETIC DENTISTRY</h3>
-              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg3} alt="serviceImg13" />
+              <img src={serviceImg3} alt="INLAY ONLAY" />
               <h3>INLAY ONLAY</h3>
-              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg4} alt="serviceImg4" />
+              <img src={serviceImg4} alt="VENEER" />
               <h3>VENEER</h3>
-              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span> </a>
+              <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
           </div>
         </div>
