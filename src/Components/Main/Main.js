@@ -227,11 +227,13 @@ const Main = () => {
           <div className="service-content">
             <span className='service-title'>OUR SPECIALISATION</span>
             <h2>Catering to all of your Dental needs and Desires</h2>
+            <p></p>
             <p>The concept of VR Dental Design arose from the need to address the challenges of all modern dentists.</p>
             <p>✅ High quality designs across a range of dental CAD products</p>
             <p>✅ Fast and reliable delivery with customized solutions</p>
             <p>✅ No need to invest in CAD design software and team</p>
             <p>✅ Live support to resolve your issues effectively and quickly</p>
+            <p></p>
             <div className="learnMore-button">
               <button type="button" className="learn-more-button">
                 LEARN MORE
@@ -241,22 +243,22 @@ const Main = () => {
           </div>
           <div className="service-img">
             <div className="single-service-box">
-              <img src={serviceImg1} alt="VALPLAST FLEXIBLE" />
+              <img src={serviceImg1} alt="VALPLAST FLEXIBLE" className='service-img' />
               <h3>VALPLAST FLEXIBLE</h3>
               <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg2} alt="COSMETIC DENTISTRY" />
+              <img src={serviceImg2} alt="COSMETIC DENTISTRY" className='service-img' />
               <h3>COSMETIC DENTISTRY</h3>
               <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg3} alt="INLAY ONLAY" />
+              <img src={serviceImg3} alt="INLAY ONLAY" className='service-img' />
               <h3>INLAY ONLAY</h3>
               <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
             <div className="single-service-box">
-              <img src={serviceImg4} alt="VENEER" />
+              <img src={serviceImg4} alt="VENEER" className='service-img' />
               <h3>VENEER</h3>
               <a href="#/" className='read-more-btn'>READ MORE <span className='arrow-btn'><FaLongArrowAltRight /></span></a>
             </div>
@@ -264,6 +266,21 @@ const Main = () => {
         </div>
       </div>
     </section>
+
+     {/* why choose us */}
+
+    <section className='why-choose-us-area'>
+      <div className='container-why-choose-us'>
+        <div className="why-choose-us-content">
+          <div className='why-choose-us-text'>
+            <span className='why-choose-us-text-title'>WHY YOU CHOOSE US</span>
+            <h2>What we do why we are exceptional than others</h2>
+            <ul className='features-list'></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
 
     </div>

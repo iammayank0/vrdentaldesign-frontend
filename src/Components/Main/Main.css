@@ -529,7 +529,6 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 .single-service-box {
   flex: 1 1 calc(50% - 20px);
-  margin: 10px;
   background-color: #f8f9fa;
   padding: 20px;
   text-align: center;
@@ -548,6 +547,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 .single-service-box h3 {
   font-size: 1.25rem;
   margin-bottom: 10px;
+  color: #1d3557;
 }
 
 .read-more-btn {
@@ -563,6 +563,26 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 .arrow-btn {
   margin-left: 5px;
+}
+
+@media (min-width: 1430px) {
+  .service-title {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+
+  .service-content h2 {
+    margin-bottom: 20px;
+    font-size: 42px;
+    font-weight: 800;
+  }
+  .service-content p {
+    margin-bottom: 18px;
+  }
+
+  .learnMore-button{
+    margin-top: 100px;
+  }
 }
 
 @media (min-width: 1400px) {
@@ -624,7 +644,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 @media (max-width: 575px) {
   .container, .main-banner, .container-about, .container-fact, .container-services {
-      max-width: 600px;  
+      max-width: 650px;  
   }
 
   .content-image, .about-content {
@@ -633,3 +653,12 @@ input[type="text"], input[type="email"], input[type="number"] {
   }
 }
 
+@media (max-width: 700px) {
+  .service-area {
+    flex-direction: column;
+  }
+
+  .service-content, .service-img {
+    flex: 1 1 100%;
+  }
+}
