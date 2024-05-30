@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Main.css'
 
-import { FaArrowRight, FaCheck, FaLongArrowAltRight } from "react-icons/fa";
+import { FaArrowRight, FaCheck, FaLongArrowAltRight, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaUserDoctor } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiUser, CiMail, CiPhone } from "react-icons/ci";
@@ -13,7 +13,20 @@ import serviceImg1 from "../../Assets/images/doctor-image/1.jpg";
 import serviceImg2 from "../../Assets/images/doctor-image/2.jpg";
 import serviceImg3 from "../../Assets/images/doctor-image/3.jpg";
 import serviceImg4 from "../../Assets/images/doctor-image/4.jpg";
-import whyChooseUsImg from "../../Assets/images/why-choose-img1.jpg"
+import whyChooseUsImg from "../../Assets/images/why-choose-img1.jpg";
+import doctorImg1 from "../../Assets/images/doctor-image/1.jpg";
+import doctorImg2 from "../../Assets/images/doctor-image/2.jpg";
+import doctorImg3 from "../../Assets/images/doctor-image/3.jpg";
+import doctorImg4 from "../../Assets/images/doctor-image/4.jpg";
+import doctorImg5 from "../../Assets/images/doctor-image/5.jpg";
+import doctorImg6 from "../../Assets/images/doctor-image/6.jpg";
+import doctorImg7 from "../../Assets/images/doctor-image/7.jpg";
+import doctorImg8 from "../../Assets/images/doctor-image/8.jpg";
+import doctorImg9 from "../../Assets/images/doctor-image/9.jpg";
+import doctorImg10 from "../../Assets/images/doctor-image/10.jpg";
+import doctorImg11 from "../../Assets/images/doctor-image/11.jpg";
+import doctorImg12 from "../../Assets/images/doctor-image/12.jpg";
+import doctorImg13 from "../../Assets/images/doctor-image/3.jpg";
 
 const slides = [
   {
@@ -320,7 +333,223 @@ const Main = () => {
      {/* Doctor Area */}
 
   <section className='doctor-area'>
-    <p>fjjasf</p>
+    <div className='container-doctor'>
+      <div className="section-title">
+        <span className='doctor-title'>OUR SERVICES</span>
+        <h2>Check our all Digital Dental Services</h2>
+      </div>
+      <div className="doctor-slides">
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg1} alt="doctorImg1" />
+          </div>
+          <div className="doctor-content">
+            <h3>Crown & Bridge</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg2} alt="doctorImg2" />
+          </div>
+          <div className="doctor-content">
+            <h3>Screw-Retain-Crown</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg3} alt="doctorImg3" />
+          </div>
+          <div className="doctor-content">
+            <h3>CPD & RPD</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg4} alt="doctorImg4" />
+          </div>
+          <div className="doctor-content">
+            <h3>Night Guard</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg5} alt="doctorImg5" />
+          </div>
+          <div className="doctor-content">
+            <h3>INLAY-ONLAY</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg6} alt="doctorImg6" />
+          </div>
+          <div className="doctor-content">
+            <h3>VENEER</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg7} alt="doctorImg7" />
+          </div>
+          <div className="doctor-content">
+            <h3>SNAP ON SMILE</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg8} alt="doctorImg8" />
+          </div>
+          <div className="doctor-content">
+            <h3>CUSTOM TRAY</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg9} alt="doctorImg9" />
+          </div>
+          <div className="doctor-content">
+            <h3>MODEL CREATE</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg10} alt="doctorImg10" />
+          </div>
+          <div className="doctor-content">
+            <h3>SURGICAL GUIDE</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg11} alt="doctorImg11" />
+          </div>
+          <div className="doctor-content">
+            <h3>DIGITAL DENTURE</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg12} alt="doctorImg12" />
+          </div>
+          <div className="doctor-content">
+            <h3>FLEXIBLE-DENTURE</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="single-doctor-box">
+          <div className="doctor-image">
+            <img src={doctorImg13} alt="doctorImg13" />
+          </div>
+          <div className="doctor-content">
+            <h3>COSMETIC DENTISTRY</h3>
+            <span>Min 2Hr | Max 12Hr</span>
+            <ul className="social-icon">
+              <li><a href="#/"><FaFacebook /> </a></li>
+              <li><a href="#/"><FaTwitter /> </a></li>
+              <li><a href="#/"><FaLinkedin /> </a></li>
+              <li><a href="#/"><FaInstagram /> </a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="slides-dot">
+          <button className='dot'>
+          <span>.</span>
+          </button>
+          <button className='dot'>
+          <span>.</span>
+          </button>
+          <button className='dot'>
+          <span>.</span>
+          </button>
+          <button className='dot'>
+          <span>.</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </section>
 
 
