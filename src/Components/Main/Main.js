@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Main.css'
 
 import { FaArrowRight, FaCheck, FaLongArrowAltRight } from "react-icons/fa";
+import { FaUserDoctor } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiUser, CiMail, CiPhone } from "react-icons/ci";
 import { RiMessage2Line } from "react-icons/ri";
@@ -12,6 +13,7 @@ import serviceImg1 from "../../Assets/images/doctor-image/1.jpg";
 import serviceImg2 from "../../Assets/images/doctor-image/2.jpg";
 import serviceImg3 from "../../Assets/images/doctor-image/3.jpg";
 import serviceImg4 from "../../Assets/images/doctor-image/4.jpg";
+import whyChooseUsImg from "../../Assets/images/why-choose-img1.jpg"
 
 const slides = [
   {
@@ -269,17 +271,57 @@ const Main = () => {
 
      {/* why choose us */}
 
-    <section className='why-choose-us-area'>
-      <div className='container-why-choose-us'>
-        <div className="why-choose-us-content">
-          <div className='why-choose-us-text'>
-            <span className='why-choose-us-text-title'>WHY YOU CHOOSE US</span>
-            <h2>What we do why we are exceptional than others</h2>
-            <ul className='features-list'></ul>
+     <section className="why-choose-us-area">
+    <div className="container-why-choose-us">
+          <div className="why-choose-us-text">
+            <div className="why-choose-us-text-content">
+              <span className="why-choose-us-text-title">WHY YOU CHOOSE US</span>
+              <h2>What we do why we are exceptional than others</h2>
+              <ul className="features-list">
+                <li>
+                  <div className="feature">
+                    <FaUserDoctor />
+                    <span>PROFESSIONAL STAFF</span>
+                    <p>All experts in Digital Dentistry.</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="feature">
+                    <FaUserDoctor />
+                    <span>EASY TO IMPORT/EXPORT</span>
+                    <p>Direct import design files from our system.</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="feature">
+                    <FaUserDoctor />
+                    <span>24/6 SUPPORT</span>
+                    <p>We provide 24/6 support to our labs.</p>
+                  </div>
+                </li>
+                <li>
+                  <div className="feature">
+                    <FaUserDoctor />
+                    <span>3 LEVEL QUALITY TESTING</span>
+                    <p>We provide high-quality Designs.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+        </div>
+        <div className="why-choose-us-img">
+          <div className="why-choose-us-image">
+            <img src={whyChooseUsImg} alt="Why Choose Us" />
           </div>
         </div>
-      </div>
-    </section>
+    </div>
+  </section>
+
+     {/* Doctor Area */}
+
+  <section className='doctor-area'>
+    <p>fjjasf</p>
+  </section>
 
 
 
