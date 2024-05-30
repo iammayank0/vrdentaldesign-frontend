@@ -52,6 +52,30 @@ const slides = [
 const Main = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentDoctorSlide, setCurrentDoctorSlide] = useState(0);
+  const doctorsPerPage = window.innerWidth >= 1050 ? 4 : window.innerWidth >= 600 ? 3 : 2;
+  const doctors = [
+    { img: doctorImg1, title: 'Crown & Bridge', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg2, title: 'Screw-Retain-Crown', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg3, title: 'CPD & RPD', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg4, title: 'Night Guard', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg5, title: 'INLAY-ONLAY', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg6, title: 'VENEER', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg7, title: 'SNAP ON SMILE', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg8, title: 'CUSTOM TRAY', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg9, title: 'MODEL CREATE', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg10, title: 'SURGICAL GUIDE', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg11, title: 'DIGITAL DENTURE', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg12, title: 'FLEXIBLE-DENTURE', time: 'Min 2Hr | Max 12Hr' },
+    { img: doctorImg13, title: 'COSMETIC DENTISTRY', time: 'Min 2Hr | Max 12Hr' }
+  ];
+
+  const totalDoctorSlides = Math.ceil(doctors.length / doctorsPerPage);
+
+  const handleDotClick = (index) => {
+    setCurrentDoctorSlide(index);
+  };
+  
 
   const goToPrevSlide = () => {
     setCurrentSlide(prevSlide => (prevSlide - 1 + slides.length) % slides.length);
@@ -332,225 +356,65 @@ const Main = () => {
 
      {/* Doctor Area */}
 
-  <section className='doctor-area'>
-    <div className='container-doctor'>
-      <div className="section-title">
-        <span className='doctor-title'>OUR SERVICES</span>
-        <h2>Check our all Digital Dental Services</h2>
-      </div>
-      <div className="doctor-slides">
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg1} alt="doctorImg1" />
-          </div>
-          <div className="doctor-content">
-            <h3>Crown & Bridge</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
+     <section className="doctor-area">
+      <div className="container-doctor">
+        <div className="section-title">
+          <span className="doctor-title">OUR SERVICES</span>
+          <h2>Check our all Digital Dental Services</h2>
         </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg2} alt="doctorImg2" />
+        <div className="doctor-slides-carousel">
+          <div
+            className="doctor-slides"
+            style={{ transform: `translateX(-${currentDoctorSlide * 100}%)` }}
+          >
+            {doctors.map((doctor, index) => (
+              <div className="single-doctor-box" key={index}>
+                <div className="doctor-image">
+                  <img src={doctor.img} alt={doctor.title} />
+                </div>
+                <div className="doctor-content">
+                  <h3>{doctor.title}</h3>
+                  <span>Min 2Hr | Max 12Hr</span>
+                  <ul className="social-icon">
+                    <li>
+                      <a href="#/">
+                        <FaFacebook />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#/">
+                        <FaTwitter />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#/">
+                        <FaLinkedin />
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#/">
+                        <FaInstagram />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="doctor-content">
-            <h3>Screw-Retain-Crown</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
+          <div className="slides-dot">
+            {Array.from({ length: totalDoctorSlides }).map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${currentDoctorSlide === index ? "active" : ""}`}
+                onClick={() => handleDotClick(index)}
+              >
+                <span>.</span>
+              </button>
+            ))}
           </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg3} alt="doctorImg3" />
-          </div>
-          <div className="doctor-content">
-            <h3>CPD & RPD</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg4} alt="doctorImg4" />
-          </div>
-          <div className="doctor-content">
-            <h3>Night Guard</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg5} alt="doctorImg5" />
-          </div>
-          <div className="doctor-content">
-            <h3>INLAY-ONLAY</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg6} alt="doctorImg6" />
-          </div>
-          <div className="doctor-content">
-            <h3>VENEER</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg7} alt="doctorImg7" />
-          </div>
-          <div className="doctor-content">
-            <h3>SNAP ON SMILE</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg8} alt="doctorImg8" />
-          </div>
-          <div className="doctor-content">
-            <h3>CUSTOM TRAY</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg9} alt="doctorImg9" />
-          </div>
-          <div className="doctor-content">
-            <h3>MODEL CREATE</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg10} alt="doctorImg10" />
-          </div>
-          <div className="doctor-content">
-            <h3>SURGICAL GUIDE</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg11} alt="doctorImg11" />
-          </div>
-          <div className="doctor-content">
-            <h3>DIGITAL DENTURE</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg12} alt="doctorImg12" />
-          </div>
-          <div className="doctor-content">
-            <h3>FLEXIBLE-DENTURE</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="single-doctor-box">
-          <div className="doctor-image">
-            <img src={doctorImg13} alt="doctorImg13" />
-          </div>
-          <div className="doctor-content">
-            <h3>COSMETIC DENTISTRY</h3>
-            <span>Min 2Hr | Max 12Hr</span>
-            <ul className="social-icon">
-              <li><a href="#/"><FaFacebook /> </a></li>
-              <li><a href="#/"><FaTwitter /> </a></li>
-              <li><a href="#/"><FaLinkedin /> </a></li>
-              <li><a href="#/"><FaInstagram /> </a></li>
-            </ul>
-          </div>
-        </div>
-        <div className="slides-dot">
-          <button className='dot'>
-          <span>.</span>
-          </button>
-          <button className='dot'>
-          <span>.</span>
-          </button>
-          <button className='dot'>
-          <span>.</span>
-          </button>
-          <button className='dot'>
-          <span>.</span>
-          </button>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 
 
