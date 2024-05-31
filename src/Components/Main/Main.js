@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Main.css'
 
-import { FaArrowRight, FaCheck, FaLongArrowAltRight, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaArrowRight, FaCheck, FaLongArrowAltRight, FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaPhone } from "react-icons/fa";
 import { FaUserDoctor } from "react-icons/fa6";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CiUser, CiMail, CiPhone } from "react-icons/ci";
@@ -416,6 +416,17 @@ const Main = () => {
       </div>
     </section>
 
+    {/* CTA area */}
+
+    <section className='CTA-area'>
+      <div className='container-CTA'>
+        <div className="cta-content">
+          <h2>Instant Design Solution for your Digital Crowns</h2>
+          <p>Get emergency assistance for Crowns/Bridges within 2 Hours.</p>
+          <a href="#/" className='call-us'><FaPhone />01294009388</a>
+        </div>
+      </div>
+    </section>
 
 
     </div>

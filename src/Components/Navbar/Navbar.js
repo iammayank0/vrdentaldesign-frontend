@@ -31,7 +31,7 @@ const Navbar = () => {
         <div className="logo">
           <img src={logo} alt="logo" />
         </div>
-        <div className={`menu-link ${menuOpen ? 'open' : ''}`}>
+        <div className={`menu-link ${menuOpen ? 'hidden' : ''}`}>
           <ul>
             <li><a href="/#">Home</a></li>
             <li><a href="/#">About</a></li>
@@ -47,6 +47,20 @@ const Navbar = () => {
           {menuOpen ? <IoClose /> : <IoMenuSharp />}
         </div>
       </nav>
+      {menuOpen && (
+        <div className="dropdown-menu">
+          <ul>
+            <li><a href="/#">Home</a></li>
+            <li><a href="/#">About</a></li>
+            <li><a href="/#">Services</a></li>
+            <li><a href="/#">Contact</a></li>
+            <li><a href="/#">Gallery</a></li>
+            <li><a href="/#">Dental Repairing</a></li>
+            <li><a href="/#">Upload Cases</a></li>
+            <li><a href="/#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
