@@ -49,26 +49,27 @@ const slides = [
   }
 ];
 
+const doctors = [
+  { img: doctorImg1, title: 'Crown & Bridge', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg2, title: 'Screw-Retain-Crown', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg3, title: 'CPD & RPD', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg4, title: 'Night Guard', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg5, title: 'INLAY-ONLAY', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg6, title: 'VENEER', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg7, title: 'SNAP ON SMILE', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg8, title: 'CUSTOM TRAY', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg9, title: 'MODEL CREATE', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg10, title: 'SURGICAL GUIDE', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg11, title: 'DIGITAL DENTURE', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg12, title: 'FLEXIBLE-DENTURE', time: 'Min 2Hr | Max 12Hr' },
+  { img: doctorImg13, title: 'COSMETIC DENTISTRY', time: 'Min 2Hr | Max 12Hr' }
+];
+
 const Main = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [currentDoctorSlide, setCurrentDoctorSlide] = useState(0);
   const doctorsPerPage = window.innerWidth >= 1050 ? 4 : window.innerWidth >= 600 ? 3 : 2;
-  const doctors = [
-    { img: doctorImg1, title: 'Crown & Bridge', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg2, title: 'Screw-Retain-Crown', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg3, title: 'CPD & RPD', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg4, title: 'Night Guard', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg5, title: 'INLAY-ONLAY', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg6, title: 'VENEER', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg7, title: 'SNAP ON SMILE', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg8, title: 'CUSTOM TRAY', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg9, title: 'MODEL CREATE', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg10, title: 'SURGICAL GUIDE', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg11, title: 'DIGITAL DENTURE', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg12, title: 'FLEXIBLE-DENTURE', time: 'Min 2Hr | Max 12Hr' },
-    { img: doctorImg13, title: 'COSMETIC DENTISTRY', time: 'Min 2Hr | Max 12Hr' }
-  ];
 
   const totalDoctorSlides = Math.ceil(doctors.length / doctorsPerPage);
 
@@ -109,15 +110,15 @@ const Main = () => {
 
     {slides.map((slide, index) => (
   <div
-    key={index}
-    className={`slide ${index === currentSlide ? 'active' : ''} slide${index + 1}`}
+  key={index}
+  className={`slide ${index === currentSlide ? 'active' : ''}`}
   >
     <div className="main-banner">
       <div className="text">
         <h5>{slide.title}</h5>
         <h1>{slide.heading}</h1>
         <p>{slide.description}</p>
-        <div className="button">
+        <div className="slide-button">
           <button> KNOW MORE<span className="icon-circle"><FaArrowRight /></span></button>
         </div>
       </div>
@@ -419,6 +420,7 @@ const Main = () => {
     {/* CTA area */}
 
     <section className='CTA-area'>
+    <div class='background-image'></div>
       <div className='container-CTA'>
         <div className="cta-content">
           <h2>Instant Design Solution for your Digital Crowns</h2>

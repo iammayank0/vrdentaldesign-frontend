@@ -60,7 +60,7 @@
   margin-top: 30px;
 }
 
-.slide .text .button button {
+.slide-button button {
   height: 50px;
   width: 180px;
   border-radius: 50px;
@@ -78,7 +78,7 @@
   margin-top: 20px;
 }
 
-.slide button:hover {
+.slide-button button:hover {
   background-color: #ffffff;
   color: rgb(182, 68, 68);
 }
@@ -105,12 +105,8 @@
   opacity: 1;
 }
 
-.slide .text button {
-  transition: background-color 0.3s, color 0.3s;
-}
 
-
-.slide button:hover .icon-circle {
+.slide-button button:hover .icon-circle {
   background-color: #fc0808;
   color: #fbfafa;
 }
@@ -817,14 +813,33 @@ input[type="text"], input[type="email"], input[type="number"] {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
 }
 
-.container-CTA{
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://vrdentaldesign.com/storage/images/section/PSL0TUAHCVcJ1qtDRO1FHTAaMC3p6BJItsKGl8Df.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Moves the background image behind other content */
+  opacity: 0.8; /* Reduce the opacity of the background image */
+}
+
+.container-CTA {
+  position: relative;
+  z-index: 1; /* Ensures the content appears above the background image */
   text-align: center !important;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
 }
+
 
 .cta-content h2 {
   color: #ffffff;
