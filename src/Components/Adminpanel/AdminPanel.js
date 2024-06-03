@@ -1,23 +1,18 @@
-// src/components/AdminPanel/AdminPanel.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './AdminPanel.css';
-import { authenticateUser, isAuthenticated, logout } from '../../utils/Auth';
-import Login from '../Login/Login';
 
 const AdminPanel = () => {
   const [navbarItems, setNavbarItems] = useState([]);
-  const [newItem, setNewItem] = useState({ title: '', url: '' });
-  const [editingItem, setEditingItem] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated());
+  const [formData, setFormData] = useState({ title: '', url: '', position: '' });
+  const [editingItemId, setEditingItemId] = useState(null);
 
   useEffect(() => {
+    // Fetch navbar items from backend API upon component mount
     const fetchNavbarItems = async () => {
       try {
-        const response = await axios.get('/api/navbarItems', {
-          headers: { Authorization: localStorage.getItem('authToken') }
-        });
-        setNavbarItems(response.data);
+        const response = await fetch('http://localhost:5000/api/navbar');
+        const data = await response.json();
+        setNavbarItems(data);
       } catch (error) {
         console.error('Error fetching navbar items:', error);
       }
@@ -26,101 +21,106 @@ const AdminPanel = () => {
     fetchNavbarItems();
   }, []);
 
-  const handleLogin = async (username, password) => {
-    try {
-      const response = await authenticateUser(username, password);
-      localStorage.setItem('authToken', response.token);
-      setIsLoggedIn(true);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleLogout = () => {
-    logout();
-    setIsLoggedIn(false);
-  };
-
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (editingItem) {
-      setEditingItem({ ...editingItem, [name]: value });
-    } else {
-      setNewItem({ ...newItem, [name]: value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleCreate = async () => {
     try {
-      if (editingItem) {
-        const response = await axios.put(`/api/navbarItems/${editingItem.id}`, editingItem, {
-          headers: { Authorization: localStorage.getItem('authToken') }
-        });
-        setNavbarItems(navbarItems.map(item => (item.id === editingItem.id ? response.data : item)));
-        setEditingItem(null);
+      const response = await fetch('http://localhost:5000/api/navbar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        // Add the new item to the UI
+        const newItem = await response.json();
+        setNavbarItems([...navbarItems, newItem]);
+        setFormData({ title: '', url: '', position: '' }); // Clear the form fields
       } else {
-        const response = await axios.post('/api/navbarItems', newItem, {
-          headers: { Authorization: localStorage.getItem('authToken') }
-        });
-        setNavbarItems([...navbarItems, { ...newItem, id: response.data.id }]);
-        setNewItem({ title: '', url: '' });
+        // Handle create error
+        console.error('Create failed:', response.statusText);
       }
     } catch (error) {
-      console.error('Error submitting navbar item:', error);
+      console.error('Create error:', error);
     }
   };
 
-  const handleEdit = (item) => {
-    setEditingItem(item);
+  const handleEdit = (itemId) => {
+    // Find the item to edit
+    const itemToEdit = navbarItems.find(item => item._id === itemId);
+    if (itemToEdit) {
+      // Set the form data to the values of the item being edited
+      setFormData({ title: itemToEdit.title, url: itemToEdit.url, position: itemToEdit.position });
+      setEditingItemId(itemId);
+    }
   };
+  
 
-  const handleDelete = async (id) => {
+  const handleUpdate = async () => {
     try {
-      await axios.delete(`/api/navbarItems/${id}`, {
-        headers: { Authorization: localStorage.getItem('authToken') }
+      const response = await fetch(`http://localhost:5000/api/navbar/${editingItemId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(formData)
       });
-      setNavbarItems(navbarItems.filter(item => item.id !== id));
+      if (response.ok) {
+        // Update the item in the UI
+        const updatedItem = await response.json();
+        setNavbarItems(navbarItems.map(item => item._id === editingItemId ? updatedItem : item));
+        setFormData({ title: '', url: '', position: '' }); // Clear the form fields
+        setEditingItemId(null); // Reset editing state
+      } else {
+        // Handle update error
+        console.error('Update failed:', response.statusText);
+      }
     } catch (error) {
-      console.error('Error deleting navbar item:', error);
+      console.error('Update error:', error);
     }
   };
 
-  if (!isLoggedIn) {
-    return <Login onLogin={handleLogin} />;
-  }
+  const handleDelete = async (itemId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/navbar/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+      if (response.ok) {
+        // Remove the item from the UI
+        setNavbarItems(navbarItems.filter(item => item._id !== itemId));
+      } else {
+        // Handle delete error
+        console.error('Delete failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Delete error:', error);
+    }
+  };
 
   return (
-    <div className="admin-panel">
-      <h1>Admin Panel</h1>
-      <button onClick={handleLogout}>Logout</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={editingItem ? editingItem.title : newItem.title}
-          onChange={handleChange}
-          placeholder="Title"
-          required
-        />
-        <input
-          type="text"
-          name="url"
-          value={editingItem ? editingItem.url : newItem.url}
-          onChange={handleChange}
-          placeholder="URL"
-          required
-        />
-        <button type="submit">{editingItem ? 'Update' : 'Add'}</button>
+    <div className="admin-container">
+      <h2 className="admin-heading">Admin Panel</h2>
+      <form className="admin-form" onSubmit={editingItemId ? handleUpdate : handleCreate}>
+        <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Title" />
+        <input type="text" name="url" value={formData.url} onChange={handleChange} placeholder="URL" />
+        <input type="number" name="position" value={formData.position} onChange={handleChange} placeholder="Position" />
+        <button type="submit">{editingItemId ? 'Update' : 'Create'}</button>
+        {editingItemId && <button type="button" onClick={() => setEditingItemId(null)}>Cancel</button>}
       </form>
-      <ul>
-        {navbarItems.map((item) => (
-          <li key={item.id}>
-            {item.title} - {item.url}
-            <div>
-              <button onClick={() => handleEdit(item)}>Edit</button>
-              <button onClick={() => handleDelete(item.id)}>Delete</button>
-            </div>
+      <ul className="navbar-item-list">
+        {navbarItems.map((item, index) => (
+          <li key={item._id}>
+            Position: {index + 1} - {item.title} - {item.url}
+            <button onClick={() => handleEdit(item._id)}>Edit</button>
+            <button onClick={() => handleDelete(item._id)}>Delete</button>
           </li>
         ))}
       </ul>

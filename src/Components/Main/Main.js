@@ -420,7 +420,7 @@ const Main = () => {
     {/* CTA area */}
 
     <section className='CTA-area'>
-    <div class='background-image'></div>
+    <div className='background-image'></div>
       <div className='container-CTA'>
         <div className="cta-content">
           <h2>Instant Design Solution for your Digital Crowns</h2>
