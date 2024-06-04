@@ -3,29 +3,59 @@ import './AdminPanel.css';
 
 const AdminPanel = () => {
   const [navbarItems, setNavbarItems] = useState([]);
+  const [contactInfo, setContactInfo] = useState({});
+  const [socialLinks, setSocialLinks] = useState([]);
   const [formData, setFormData] = useState({ title: '', url: '', position: '' });
   const [editingItemId, setEditingItemId] = useState(null);
 
   useEffect(() => {
-    // Fetch navbar items from backend API upon component mount
-    const fetchNavbarItems = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/navbar');
-        const data = await response.json();
-        setNavbarItems(data);
-      } catch (error) {
-        console.error('Error fetching navbar items:', error);
-      }
-    };
-
     fetchNavbarItems();
+    fetchContactInfo();
+    fetchSocialLinks();
   }, []);
+
+  const fetchNavbarItems = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/navbar');
+      const data = await response.json();
+      setNavbarItems(data);
+    } catch (error) {
+      console.error('Error fetching navbar items:', error);
+    }
+  };
+
+  const fetchContactInfo = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/contact-info');
+      const data = await response.json();
+      setContactInfo(data);
+    } catch (error) {
+      console.error('Error fetching contact info:', error);
+    }
+  };
+
+  const fetchSocialLinks = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/social-links');
+      const data = await response.json();
+      setSocialLinks(data);
+    } catch (error) {
+      console.error('Error fetching social links:', error);
+    }
+  };
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleCreate = async () => {
+  const handleContactInfoChange = (e) => {
+    setContactInfo({ ...contactInfo, [e.target.name]: e.target.value });
+  };
+  
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch('http://localhost:5000/api/navbar', {
         method: 'POST',
@@ -36,12 +66,9 @@ const AdminPanel = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        // Add the new item to the UI
-        const newItem = await response.json();
-        setNavbarItems([...navbarItems, newItem]);
+        await fetchNavbarItems(); // Fetch updated navbar items after creation
         setFormData({ title: '', url: '', position: '' }); // Clear the form fields
       } else {
-        // Handle create error
         console.error('Create failed:', response.statusText);
       }
     } catch (error) {
@@ -50,17 +77,15 @@ const AdminPanel = () => {
   };
 
   const handleEdit = (itemId) => {
-    // Find the item to edit
     const itemToEdit = navbarItems.find(item => item._id === itemId);
     if (itemToEdit) {
-      // Set the form data to the values of the item being edited
       setFormData({ title: itemToEdit.title, url: itemToEdit.url, position: itemToEdit.position });
       setEditingItemId(itemId);
     }
   };
-  
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(`http://localhost:5000/api/navbar/${editingItemId}`, {
         method: 'PUT',
@@ -71,13 +96,10 @@ const AdminPanel = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        // Update the item in the UI
-        const updatedItem = await response.json();
-        setNavbarItems(navbarItems.map(item => item._id === editingItemId ? updatedItem : item));
+        await fetchNavbarItems(); // Fetch updated navbar items after update
         setFormData({ title: '', url: '', position: '' }); // Clear the form fields
         setEditingItemId(null); // Reset editing state
       } else {
-        // Handle update error
         console.error('Update failed:', response.statusText);
       }
     } catch (error) {
@@ -94,10 +116,8 @@ const AdminPanel = () => {
         }
       });
       if (response.ok) {
-        // Remove the item from the UI
-        setNavbarItems(navbarItems.filter(item => item._id !== itemId));
+        await fetchNavbarItems(); // Fetch updated navbar items after deletion
       } else {
-        // Handle delete error
         console.error('Delete failed:', response.statusText);
       }
     } catch (error) {
@@ -105,22 +125,102 @@ const AdminPanel = () => {
     }
   };
 
+  const handleContactInfoUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:5000/api/contact-info`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(contactInfo) 
+      });
+      if (response.ok) {
+        await fetchContactInfo();
+      } else {
+        console.error('Update failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Update error:', error);
+    }
+  };
+  
+  
+
+  const handleSocialLinkEdit = (itemId) => {
+    const linkToEdit = socialLinks.find(link => link._id === itemId);
+    if (linkToEdit) {
+      setFormData({ url: linkToEdit.url, icon: linkToEdit.icon });
+      setEditingItemId(itemId);
+    }
+  };
+
+  const handleSocialLinkUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:5000/api/social-links/${editingItemId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        await fetchSocialLinks();
+        setFormData({ url: '', icon: '' }); // Clear the form fields
+        setEditingItemId(null); // Reset editing state
+      } else {
+        console.error('Update failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Update error:', error);
+    }
+  };
+
   return (
     <div className="admin-container">
       <h2 className="admin-heading">Admin Panel</h2>
       <form className="admin-form" onSubmit={editingItemId ? handleUpdate : handleCreate}>
-        <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Title" />
-        <input type="text" name="url" value={formData.url} onChange={handleChange} placeholder="URL" />
-        <input type="number" name="position" value={formData.position} onChange={handleChange} placeholder="Position" />
+        <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Title" required />
+        <input type="text" name="url" value={formData.url} onChange={handleChange} placeholder="URL" required />
+        <input type="number" name="position" value={formData.position} onChange={handleChange} placeholder="Position" required />
         <button type="submit">{editingItemId ? 'Update' : 'Create'}</button>
         {editingItemId && <button type="button" onClick={() => setEditingItemId(null)}>Cancel</button>}
       </form>
       <ul className="navbar-item-list">
-        {navbarItems.map((item, index) => (
+        {navbarItems.sort((a, b) => a.position - b.position).map(item => (
           <li key={item._id}>
-            Position: {index + 1} - {item.title} - {item.url}
+            {item.title} - {item.url} - Position: {item.position}
             <button onClick={() => handleEdit(item._id)}>Edit</button>
             <button onClick={() => handleDelete(item._id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+
+
+      {/* Contact Info Form */}
+      <form className="admin-form" onSubmit={handleContactInfoUpdate}>
+        <input type="text" name="phone" value={contactInfo.phone || ''} onChange={handleContactInfoChange} placeholder="Phone" required />
+        <input type="text" name="email" value={contactInfo.email || ''} onChange={handleContactInfoChange} placeholder="Email" required />
+        <button type="submit">Update Contact Info</button>
+      </form>
+
+
+      {/* Social Links Form */}
+      <form className="admin-form" onSubmit={handleSocialLinkUpdate}>
+        <input type="text" name="url" value={formData.url} onChange={handleChange} placeholder="URL" required />
+        <input type="text" name="icon" value={formData.icon} onChange={handleChange} placeholder="Icon" required />
+        <button type="submit">{editingItemId ? 'Update' : 'Create'}</button>
+        {editingItemId && <button type="button" onClick={() => setEditingItemId(null)}>Cancel</button>}
+      </form>
+      {/* Social Links List */}
+      <ul className="social-links-list">
+        {socialLinks.map((link) => (
+          <li key={link._id}>
+            <a href={link.url}>{link.icon}</a>
+            <button onClick={() => handleSocialLinkEdit(link._id)}>Edit</button>
           </li>
         ))}
       </ul>
