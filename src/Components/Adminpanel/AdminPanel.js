@@ -66,8 +66,8 @@ const AdminPanel = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        await fetchNavbarItems(); // Fetch updated navbar items after creation
-        setFormData({ title: '', url: '', position: '' }); // Clear the form fields
+        await fetchNavbarItems(); 
+        setFormData({ title: '', url: '', position: '' }); 
       } else {
         console.error('Create failed:', response.statusText);
       }
@@ -96,9 +96,9 @@ const AdminPanel = () => {
         body: JSON.stringify(formData)
       });
       if (response.ok) {
-        await fetchNavbarItems(); // Fetch updated navbar items after update
-        setFormData({ title: '', url: '', position: '' }); // Clear the form fields
-        setEditingItemId(null); // Reset editing state
+        await fetchNavbarItems(); 
+        setFormData({ title: '', url: '', position: '' }); 
+        setEditingItemId(null);
       } else {
         console.error('Update failed:', response.statusText);
       }
@@ -116,7 +116,7 @@ const AdminPanel = () => {
         }
       });
       if (response.ok) {
-        await fetchNavbarItems(); // Fetch updated navbar items after deletion
+        await fetchNavbarItems(); 
       } else {
         console.error('Delete failed:', response.statusText);
       }
@@ -169,8 +169,8 @@ const AdminPanel = () => {
       });
       if (response.ok) {
         await fetchSocialLinks();
-        setFormData({ url: '', icon: '' }); // Clear the form fields
-        setEditingItemId(null); // Reset editing state
+        setFormData({ url: '', icon: '' }); 
+        setEditingItemId(null); 
       } else {
         console.error('Update failed:', response.statusText);
       }
