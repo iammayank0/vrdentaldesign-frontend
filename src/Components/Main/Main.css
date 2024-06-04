@@ -8,6 +8,18 @@
   align-items: center; /* Center vertically */
 }
 
+.background1 {
+  background-image: url('../../Assets/images/main-banner-image/1.jpg');
+}
+
+.background2 {
+  background-image: url('../../Assets/images/main-banner-image/2.jpg');
+}
+
+.background3 {
+  background-image: url('../../Assets/images/main-banner-image/3.jpg');
+}
+
 .slide {
   position: absolute;
   top: 0;

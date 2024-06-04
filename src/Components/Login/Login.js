@@ -17,7 +17,7 @@ const Login = ({ setLoggedIn }) => {
     e.preventDefault();
     const { username, password } = formData;
 
-    // Check if the entered username and password match the constant values
+    
     if (username === 'admin' && password === 'password') {
       // Simulate a successful login
       localStorage.setItem('token', 'fakeToken'); // Dummy token
