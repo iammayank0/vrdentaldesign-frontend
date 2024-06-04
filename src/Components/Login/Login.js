@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = ({ setLoggedIn }) => {
-
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -16,25 +15,16 @@ const Login = ({ setLoggedIn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem('token', data.token);
-        setLoggedIn(true);
-        navigate('/admin'); // Redirect to admin panel after successful login
-      } else {
-        // Handle login error
-        console.error('Login failed:', data.message);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
+    const { username, password } = formData;
+
+    // Check if the entered username and password match the constant values
+    if (username === 'admin' && password === 'password') {
+      // Simulate a successful login
+      localStorage.setItem('token', 'fakeToken'); // Dummy token
+      setLoggedIn(true);
+      navigate('/admin');
+    } else {
+      console.error('Login failed: Invalid credentials');
     }
   };
 

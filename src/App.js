@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import AdminPanel from './Components/Adminpanel/AdminPanel';
 import Main from './Components/Main/Main';
@@ -15,16 +15,28 @@ const MainLayout = ({ children }) => (
 );
 
 const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <Router>
       <Routes>
         {/* Login Page Route */}
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login setLoggedIn={setLoggedIn} />}
+        />
 
         {/* Admin Panel Route */}
-        <Route path="/admin" element={<AdminPanel />} />
+        <Route
+          path="/admin"
+          element={loggedIn ? <AdminPanel /> : <Navigate to="/login" />}
+        />
 
-        <Route path="*" element={<MainLayout><Main /></MainLayout>} />
+        {/* Default Route */}
+        <Route
+          path="/*"
+          element={<MainLayout><Main /></MainLayout>}
+        />
       </Routes>
     </Router>
   );

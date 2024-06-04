@@ -3,6 +3,7 @@
 .login-container {
   width: 300px;
   margin: 0 auto;
+  background-color: black;
 }
 
 .login-form {
