@@ -1,12 +1,12 @@
 /* AdminPanel.css */
 
-.admin-container {
+.admin-nav-container {
   max-width: 800px;
   margin: 0 auto;
   background-color: black;
 }
 
-.admin-heading {
+.admin-nav-heading {
   margin-bottom: 20px;
   font-size: 24px;
 }

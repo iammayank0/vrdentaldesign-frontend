@@ -5,7 +5,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    height: 170vh;
+    max-height: 170vh;
     color: #fff;
   }
 
@@ -15,17 +15,5 @@ body {
     }
   }
 
-  .login-container .background1,
-.login-container .background2,
-.login-container .background3,
-.admin-panel .background1,
-.admin-panel .background2,
-.admin-panel .background3 {
-    display: none; 
-}
 
-.login-container body,
-.admin-panel body {
-    background: #f2f2f2; 
-    height: 100vh; 
-}
+
