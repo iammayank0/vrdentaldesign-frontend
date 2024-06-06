@@ -32,6 +32,7 @@ const Login = ({ setLoggedIn }) => {
   };
 
   return (
+    <div class="wholebody">
     <div className="login-container">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -45,6 +46,7 @@ const Login = ({ setLoggedIn }) => {
         </div>
         <button type="submit">Login</button>
       </form>
+    </div>
     </div>
   );
 };
