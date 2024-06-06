@@ -10,6 +10,7 @@ const Main = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log('Fetching slides...'); // Add this line
     const fetchBannerContent = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/banner');
@@ -26,9 +27,11 @@ const Main = () => {
         setLoading(false);
       }
     };
-
+  
     fetchBannerContent();
   }, []);
+  
+  
 
   useEffect(() => {
     if (slides.length > 0) {
