@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './NavPanel.css';
+import './Panel.css';
 
 const NavPanel = () => {
   const [navbarItems, setNavbarItems] = useState([]);
