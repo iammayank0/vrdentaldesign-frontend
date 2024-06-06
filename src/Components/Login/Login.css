@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .wholebody {
   display: flex;
   justify-content: center;
@@ -7,6 +8,9 @@
   font-family: Arial, sans-serif;
   background-color: #f0f0f0; /* Optional: background color */
 }
+=======
+/* Login.css */
+>>>>>>> 0fb6adfba33deca860d60a1b1b9184ba35340f68
 
 .login-container {
   background-color: #ffffff;

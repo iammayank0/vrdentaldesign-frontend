@@ -1,14 +1,24 @@
+<<<<<<< HEAD:src/Components/Adminpanel/AdminPanel.css
 .admin-container {
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
   width: 80%;
+=======
+/* AdminPanel.css */
+
+.admin-nav-container {
+>>>>>>> 0fb6adfba33deca860d60a1b1b9184ba35340f68:src/Components/Adminpanel/Subpanel/NavPanel.css
   max-width: 800px;
 }
 
+<<<<<<< HEAD:src/Components/Adminpanel/AdminPanel.css
 .admin-heading {
   text-align: center;
+=======
+.admin-nav-heading {
+>>>>>>> 0fb6adfba33deca860d60a1b1b9184ba35340f68:src/Components/Adminpanel/Subpanel/NavPanel.css
   margin-bottom: 20px;
   color: black;
 }
