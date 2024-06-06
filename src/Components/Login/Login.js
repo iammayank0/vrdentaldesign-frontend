@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
+import { RiLockPasswordFill } from "react-icons/ri";
+
 import './Login.css';
 
 const Login = ({ setLoggedIn }) => {
@@ -33,11 +36,11 @@ const Login = ({ setLoggedIn }) => {
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <div>
-          <label>Username:</label>
+          <label> <FaUser />Username: </label>
           <input type="text" name="username" value={formData.username} onChange={handleChange} />
         </div>
         <div>
-          <label>Password:</label>
+          <label> <RiLockPasswordFill />Password:</label>
           <input type="password" name="password" value={formData.password} onChange={handleChange} />
         </div>
         <button type="submit">Login</button>
