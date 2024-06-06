@@ -78,7 +78,9 @@ const SlidePanel = () => {
       formDataToSend.append('heading', formData.heading);
       formDataToSend.append('description', formData.description);
       formDataToSend.append('position', formData.position);
-      formDataToSend.append('image', formData.image);
+      if (formData.image) {
+        formDataToSend.append('image', formData.image);
+      }
 
       const response = await fetch(`http://localhost:5000/api/banner/${editingItemId}`, {
         method: 'PUT',
@@ -88,7 +90,6 @@ const SlidePanel = () => {
         body: formDataToSend
       });
       if (response.ok) {
-        // handle success
         await fetchSlides();
         setFormData({ title: '', heading: '', description: '', position: '', image: null });
         setEditingItemId(null);
@@ -133,18 +134,17 @@ const SlidePanel = () => {
         {editingItemId && <button type="button" onClick={() => setEditingItemId(null)}>Cancel</button>}
       </form>
       <ul className="slide-list">
-  {slides.sort((a, b) => a.position - b.position).map((slide) => (
-    <li key={slide._id}>
-      <h3>{slide.title}</h3>
-      <p>{slide.heading}</p>
-      <p>{slide.description}</p>
-      <p>Position: {slide.position}</p>
-      <button onClick={() => handleEdit(slide._id)}>Edit</button>
-      <button onClick={() => handleDelete(slide._id)}>Delete</button> {/* Add this line */}
-    </li>
-  ))}
-</ul>
-
+        {slides.sort((a, b) => a.position - b.position).map((slide) => (
+          <li key={slide._id}>
+            <h3>{slide.title}</h3>
+            <p>{slide.heading}</p>
+            <p>{slide.description}</p>
+            <p>Position: {slide.position}</p>
+            <button onClick={() => handleEdit(slide._id)}>Edit</button>
+            <button onClick={() => handleDelete(slide._id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
