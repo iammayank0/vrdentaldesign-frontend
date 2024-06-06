@@ -75,3 +75,7 @@
 .social-links-list li a:hover {
   text-decoration: underline; /* Underline links on hover */
 }
+
+.admin-slide-container{
+  color: black;
+}
