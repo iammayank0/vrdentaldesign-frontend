@@ -5,14 +5,14 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    max-height: 170vh;
+    max-height: 160vh;
     color: #fff;
   }
 
-  /* @media (max-width: 600px) {
+  @media (max-width: 600px) {
     html{
       width: fit-content;
     }
-  } */
+  }
 
 
