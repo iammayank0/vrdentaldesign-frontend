@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Main.css';
+import { FaArrowRight } from "react-icons/fa"
 
 const Main = () => {
   const [serviceContents, setServiceContents] = useState([]);
 
   useEffect(() => {
-    // Fetch service contents from the backend
     const fetchServiceContents = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/services');
@@ -29,15 +29,24 @@ const Main = () => {
               <div key={service._id} className="service-content">
                 <span className='service-title'>{service.subTitle}</span>
                 <h2>{service.title}</h2>
+                <p></p>
                 <p>The concept of VR Dental Design arose from the need to address the challenges of all modern dentists.</p>
-                {/* Render description */}
-                <ul>
                   {service.description.map((item, index) => (
-                    <p key={index}>✅{item}</p>
+                    <p key={index}>✅ {item}</p>
                   ))}
-                </ul>
-                {/* Render images and titles */}
+                  <p></p>
+                  <div className="learnMore-button">
+              <button type="button" className="learn-more-button">
+                LEARN MORE
+                <span className="icon-circle"><FaArrowRight /></span>
+              </button>
+            </div>
+              </div>
+            ))}
+              {serviceContents.map((service) => (
+                <div key={service._id}>
                 <div className="service-img">
+
                   <div className="single-service-box">
                     <img src={service.img1} alt={service.img1Title} className='service-img' />
                     <h3>{service.img1Title}</h3>
@@ -58,9 +67,10 @@ const Main = () => {
                     <h3>{service.img4Title}</h3>
                     <a href="#/" className='read-more-btn'>READ MORE</a>
                   </div>
-                </div>
-              </div>
-            ))}
+                  </div>
+                  </div>
+
+              ))}
           </div>
         </div>
       </section>
