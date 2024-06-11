@@ -1,129 +1,396 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Main.css';
-import img1 from "../../Assets/images/about-img.jpg";
-import img2 from "../../Assets/images/about-img1.jpg";
-import signImage from "../../Assets/images/signature.png";
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck, FaArrowRight } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { CiUser, CiMail, CiPhone } from 'react-icons/ci';
+import { RiMessage2Line } from 'react-icons/ri';
 
 const Main = () => {
+  const [funFacts, setFunFacts] = useState([]);
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [aboutContent, setAboutContent] = useState(null);
+  const [slides, setSlides] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  useEffect(() => {
+    console.log('Fetching slides...');
+    const fetchBannerContent = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/banner');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setSlides(data);
+        console.log('Slides fetched:', data);
+      } catch (error) {
+        console.error('Error fetching banner content:', error);
+        setError('Failed to load banner content.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBannerContent();
+  }, []);
+
+  useEffect(() => {
+    if (slides.length > 0) {
+      document.body.style.backgroundImage = `url(${slides[currentSlide].backgroundImageUrl})`;
+    }
+  }, [currentSlide, slides]);
+
+  const goToPrevSlide = () => {
+    setCurrentSlide(prevSlide => (prevSlide - 1 + slides.length) % slides.length);
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide(prevSlide => (prevSlide + 1) % slides.length);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('Submitting form data:', formData);
+
+    const formattedData = {
+      ...formData,
+      phone: formData.phone.toString(),
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/enquiry/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formattedData)
+      });
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        console.error('Error response:', errorResponse);
+        throw new Error(errorResponse.message || `HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log('Success response:', result);
+
+      alert('Enquiry submitted successfully');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting enquiry:', error);
+      alert('Failed to submit enquiry. Please try again.');
+    }
+  };
+
+  useEffect(() => {
+    const fetchAboutContent = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/about');
+        const data = response.data;
+
+        if (typeof data.services === 'string') {
+          data.services = JSON.parse(data.services);
+        }
+
+        setAboutContent(data);
+      } catch (error) {
+        console.error('Error fetching About content:', error);
+      }
+    };
+
+    fetchAboutContent();
+  }, []);
 
   const handleSliderChange = (e) => {
     setSliderPosition(e.target.value);
   };
 
+  useEffect(() => {
+    const fetchFunFacts = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/fun-facts');
+        setFunFacts(response.data);
+      } catch (error) {
+        console.error('Error fetching fun facts:', error);
+      }
+    };
+
+    fetchFunFacts();
+  }, []);
+
   return (
     <div>
-      <section className='about-area'>
-        <div className="container-about">
-          <div className="about-img-container">
-            <div className='about-image' style={{'--position': `${sliderPosition}%`}}>
-              <div className="content-image">
-                <img src={img1} alt='img1' className='image-before slider-image' />
-                <img src={img2} alt='img2' className='image-after slider-image' />
+      {loading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
+
+      {!loading && !error && (
+        <>
+          <div className="banner-section">
+            <button
+              className="arrow back"
+              onClick={goToPrevSlide}
+              aria-label="Previous Slide"
+            >
+              <div className="arrow-box">
+                <IoIosArrowBack />
               </div>
-              <input type="range" min="0" max="100" value={sliderPosition} onChange={handleSliderChange} aria-label='Percentage of before photo shown' className='slider'/>
-              <div className="slider-line" aria-hidden="true"></div>
-              <div className="slider-button" aria-hidden="true">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="30"
-                  height="30"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                >
-                  <rect width="256" height="256" fill="none"></rect>
-                  <line
-                    x1="128"
-                    y1="40"
-                    x2="128"
-                    y2="216"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="16"
-                  ></line>
-                  <line
-                    x1="96"
-                    y1="128"
-                    x2="16"
-                    y2="128"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="16"
-                  ></line>
-                  <polyline
-                    points="48 160 16 128 48 96"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="16"
-                  ></polyline>
-                  <line
-                    x1="160"
-                    y1="128"
-                    x2="240"
-                    y2="128"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="16"
-                  ></line>
-                  <polyline
-                    points="208 96 240 128 208 160"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="16"
-                  ></polyline>
-                </svg>
+            </button>
+
+            <button
+              className="arrow forward"
+              onClick={goToNextSlide}
+              aria-label="Next Slide"
+            >
+              <div className="arrow-box">
+                <IoIosArrowForward />
               </div>
-            </div>
+            </button>
+
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={`slide ${index === currentSlide ? 'active' : ''}`}
+                role="tabpanel"
+                aria-hidden={index !== currentSlide}
+                aria-labelledby={`slide-${index}`}
+              >
+                <div className="main-banner">
+                  <div className="text">
+                    <h5 id={`slide-${index}`}>{slide.title}</h5>
+                    <h1>{slide.heading}</h1>
+                    <p>{slide.description}</p>
+                    <div className="slide-button">
+                      <button> KNOW MORE<span className="icon-circle"><FaArrowRight /></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="about-content">
-            <span className='subTitle'>WHO WE ARE</span>
-            <h2>Let's Smile and Rise together</h2>
-            <p>With a vision "Let's Smile and Rise Together", we are a premier dental designing company, passionately dedicated to transforming dental spaces into extraordinary works of art. With a rich blend of artistic flair and technical expertise, we create captivating environments that inspire both dental laboratories and dental practices. Our team of skilled technicians and designers work closely with dental professionals, crafting customized designs that harmonize aesthetics, functionality, and ergonomic considerations. From concept to completion, we meticulously orchestrate every detail, incorporating innovative technologies and expertise to elevate the dental experience. With our unwavering commitment to excellence, we have earned a reputation as pioneers in dental CAD designing, setting new benchmarks and reshaping the landscape of the digital dental industry across the globe. To meet all the requirements, we embrace all the verticals of Dental prosthetics and Designing as mentioned</p>
-            <div className="content-list">
-              <div className="list1">
-                <ul>
-                  <li><FaCheck className='icon' />Crown & Bridge</li>
-                  <li><FaCheck className='icon' />Inlay Onlay</li>
-                  <li><FaCheck className='icon' />Screw-Retain-Crown</li>
-                  <li><FaCheck className='icon' />Veneer</li>
-                  <li><FaCheck className='icon' />Snap on Smile</li>
-                  <li><FaCheck className='icon' />Custom Tray</li>
-                </ul>
+
+          {/* Enquiry form */}
+          <section className='container'>
+            <div className='content'>
+              <span className='title'>ENQUIRY FORM</span>
+              <h2>Enquiry Now</h2>
+
+              <form className="enquiry-form" onSubmit={handleSubmit}>
+                <div className='personal-details'>
+                  <div className="text-name">
+                    <CiUser className="icon" />
+                    <div className="separator">|</div>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="YOUR NAME"
+                      required
+                    />
+                  </div>
+                  <div className="text-email">
+                    <CiMail className="icon" />
+                    <div className="separator">|</div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="YOUR EMAIL"
+                      required
+                    />
+                  </div>
+                  <div className="text-num">
+                    <CiPhone className="icon" />
+                    <div className="separator">|</div>
+                    <input
+                      type="number"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="YOUR PHONE"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="message">
+                  <RiMessage2Line className="icon" />
+                  <div className="separator">|</div>
+                  <input
+                    type="text"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Message"
+                    required
+                  />
+                </div>
+                <div className="enquiry-button">
+                  <button type="submit" className="submit-button">
+                    SEND ENQUIRY
+                    <span className="icon--circle"><FaArrowRight /></span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          {/* ABOUT AREA */}
+          <section className='about-area'>
+            <div className="container-about">
+              <div className="about-img-container">
+                <div className='about-image' style={{ '--position': `${sliderPosition}%` }}>
+                  <div className="content-image">
+                    <img src={aboutContent.img1} alt='img1' className='image-before slider-image' />
+                    <img src={aboutContent.img2} alt='img2' className='image-after slider-image' />
+                  </div>
+                  <input type="range" min="0" max="100" value={sliderPosition} onChange={handleSliderChange} aria-label='Percentage of before photo shown' className='slider' />
+                  <div className="slider-line" aria-hidden="true"></div>
+                  <div className="slider-button" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      fill="currentColor"
+                      viewBox="0 0 256 256"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <line
+                        x1="128"
+                        y1="40"
+                        x2="128"
+                        y2="216"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="16"
+                      ></line>
+                      <line
+                        x1="96"
+                        y1="128"
+                        x2="16"
+                        y2="128"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="16"
+                      ></line>
+                      <polyline
+                        points="48 160 16 128 48 96"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="16"
+                      ></polyline>
+                      <line
+                        x1="160"
+                        y1="128"
+                        x2="240"
+                        y2="128"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="16"
+                      ></line>
+                      <polyline
+                        points="208 96 240 128 208 160"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="16"
+                      ></polyline>
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div className="list2">
-                <ul>
-                  <li><FaCheck className='icon' />CPD & RPD</li>
-                  <li><FaCheck className='icon' />Night GUARD</li>
-                  <li><FaCheck className='icon' />DIGITAL DENTURE</li>
-                  <li><FaCheck className='icon' />SURGICAL GUIDE</li>
-                  <li><FaCheck className='icon' />FLEXIBLE DENTURE</li>
-                  <li><FaCheck className='icon' />Model Create</li>
-                </ul>
+              <div className="about-content">
+                <span className='subTitle'>{aboutContent.subTitle}</span>
+                <h2>{aboutContent.title}</h2>
+                <p>{aboutContent.description}</p>
+                <div className="content-list">
+                  <div className="list1">
+                    <ul>
+                      {aboutContent.services && aboutContent.services.slice(0, Math.ceil(aboutContent.services.length / 2)).map((service, index) => (
+                        <li key={index}><FaCheck className='icon' />{service}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="list2">
+                    <ul>
+                      {aboutContent.services && aboutContent.services.slice(Math.ceil(aboutContent.services.length / 2)).map((service, index) => (
+                        <li key={index}><FaCheck className='icon' />{service}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className="signature-content">
+                  <div className="sign-img">
+                    <img src={aboutContent.signImage} alt='signImage' />
+                  </div>
+                  <div className="sign-content">
+                    <h5>{aboutContent.companyName}</h5>
+                    <span>{aboutContent.founders}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="signature-content">
-              <div className="sign-img">
-                <img src={signImage} alt='signImage' />
-              </div>
-              <div className="sign-content">
-                <h5>VR DENTAL</h5>
-                <span>Co-Founder & Managing Director - Rahul Rajput CDT, Co-Founder & CEO- Ravi Kumar, Co-Founder & Director - Satender</span>
-              </div>
+          </section>
+
+
+          {/* Fun Facts Area */}
+      <section className="factArea">
+        <div className="container-fact">
+          <div className="content-fact">
+            <div className="fact-text">
+              <span className='fun-title'>FUN FACTS</span>
+              <h2>Learn More About Our Success Stories</h2>
+            </div>
+            <div className="fact-num">
+              {funFacts.map((fact, index) => (
+                <div className="single-funFact" key={index}>
+                  <h3>
+                    <span className="odometer-digit">{fact.number}</span>
+                    <sup>+</sup>
+                  </h3>
+                  <p>{fact.label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+
+
+        </>
+      )}
     </div>
   );
 };
