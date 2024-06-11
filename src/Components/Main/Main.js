@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Main.css';
+
 import { FaCheck, FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { CiUser, CiMail, CiPhone } from 'react-icons/ci';
 import { RiMessage2Line } from 'react-icons/ri';
+import { FaUserDoctor } from "react-icons/fa6";
 
 const Main = () => {
+  const [content, setContent] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [serviceContents, setServiceContents] = useState([]);
   const [funFacts, setFunFacts] = useState([]);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [aboutContent, setAboutContent] = useState(null);
   const [slides, setSlides] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [loadingBanner, setloadingBanner] = useState(true);
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -42,7 +46,7 @@ const Main = () => {
         console.error('Error fetching banner content:', error);
         setError('Failed to load banner content.');
       } finally {
-        setLoading(false);
+        setloadingBanner(false);
       }
     };
 
@@ -154,12 +158,40 @@ const Main = () => {
     fetchServiceContents();
   }, []);
 
+  useEffect(() => {
+    // Fetch Why Choose Us content from the backend
+    const fetchWhyChooseUsContent = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/whychooseus');
+        if (!response.ok) {
+          throw new Error('Failed to fetch Why Choose Us content');
+        }
+        const data = await response.json();
+        setContent(data);
+      } catch (error) {
+        console.error('Error fetching Why Choose Us content:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWhyChooseUsContent();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!content) {
+    return <div>No content available</div>;
+  }
+
   return (
     <div>
-      {loading && <div>Loading...</div>}
+      {loadingBanner && <div>loadingBanner...</div>}
       {error && <div>{error}</div>}
 
-      {!loading && !error && (
+      {!loadingBanner && !error && (
         <>
           <div className="banner-section">
             <button
@@ -453,6 +485,35 @@ const Main = () => {
           </div>
         </div>
       </section>
+
+      {/* why choose us */}
+
+     <section className="why-choose-us-area">
+    <div className="container-why-choose-us">
+          <div className="why-choose-us-text">
+            <div className="why-choose-us-text-content">
+              <span className="why-choose-us-text-title">{content.sectionTitle}</span>
+              <h2>{content.subtitle}</h2>
+              <ul className="features-list">
+                {content.features.map((feature, index) => (
+                  <li key={index}>
+                    <div className="feature">
+                      <FaUserDoctor />
+                      <span>{feature.title}</span>
+                      <p>{feature.description}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+        </div>
+        <div className="why-choose-us-img">
+          <div className="why-choose-us-image">
+            <img src={content.image} alt="Why Choose Us" />
+          </div>
+        </div>
+    </div>
+  </section>
 
 
 
