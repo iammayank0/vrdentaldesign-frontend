@@ -587,7 +587,6 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 .service-title {
-  display: block;
   color: #df3946;
   margin-bottom: 8px;
   position: relative;
@@ -708,7 +707,6 @@ input[type="text"], input[type="email"], input[type="number"] {
     margin-top: 100px;
   }
 }
-
 
 
 
