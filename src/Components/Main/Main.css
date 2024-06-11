@@ -381,6 +381,7 @@ input[type="text"], input[type="email"], input[type="number"] {
   z-index: 1;
   font-weight: 700;
   font-size: 14px;
+  padding-top: 20px;
 }
 
 .about-content h2 {
@@ -402,6 +403,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 .content-list{
   display: grid;
   grid-template-columns: 1fr 1fr ;
+  
 }
 
 .list1 .icon{
@@ -470,6 +472,94 @@ input[type="text"], input[type="email"], input[type="number"] {
 .single-funFact:nth-child(4n) {
   margin-bottom: 0;
 }
+
+/* For screens smaller than 768px */
+@media screen and (max-width: 767px) {
+  .container-about {
+    flex-direction: column;
+  }
+
+  .slider-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .content-list {
+    grid-template-columns: 1fr;
+  }
+
+  .fact-text h2 {
+    font-size: 32px;
+  }
+
+  .fact-num h3 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .container-about {
+    flex-direction: column; /* Your styles for container-about here */
+    padding-top: 20px;
+  }
+
+  .slider-image {
+    width: 100%;
+    height: auto;  /* Your styles for slider-image here */
+  }
+
+  .about-content {
+    padding-left: 0;
+    text-align: center;/* Your styles for about-content here */
+  }
+
+  .content-list {
+    grid-template-columns: 1fr; /* Your styles for content-list here */
+  }
+
+  .fact-text h2 {
+    font-size: 32px;/* Your styles for fact-text h2 here */
+  }
+
+  .fact-num h3 {
+    font-size: 28px; /* Your styles for fact-num h3 here */
+  }
+}
+
+/* For screens larger than 768px */
+@media screen and (min-width: 1024px) and (max-width: 1250px) {
+  .container-about {
+    flex-direction: column; /* Your styles for container-about here */
+  }
+
+  .slider-image {
+    width: 100%;
+    height: auto;  /* Your styles for slider-image here */
+  }
+
+  .about-content {
+    padding-left: 0;
+    text-align: center;/* Your styles for about-content here */
+  }
+
+  .content-list {
+    grid-template-columns: 1fr; /* Your styles for content-list here */
+  }
+
+  .fact-text h2 {
+    font-size: 32px;/* Your styles for fact-text h2 here */
+  }
+
+  .fact-num h3 {
+    font-size: 28px; /* Your styles for fact-num h3 here */
+  }
+}
+
 
 /* Service area */
   
