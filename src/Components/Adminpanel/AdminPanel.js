@@ -5,6 +5,7 @@ import AboutPanel from './Subpanel/AboutPanel';
 import FactPanel from './Subpanel/FactPanel';
 import ServicePanel from './Subpanel/ServicePanel';
 import WhyChooseUsPanel from './Subpanel/WhychooseusPanel';
+import DoctorPanel from './Subpanel/DoctorPanel';
 
 const AdminPanel = () => {
   return (
@@ -15,6 +16,7 @@ const AdminPanel = () => {
       <FactPanel />
       <ServicePanel />
       <WhyChooseUsPanel />
+      <DoctorPanel />
     </div>
   )
 }
