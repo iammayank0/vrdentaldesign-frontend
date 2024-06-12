@@ -6,7 +6,7 @@ import { FaCheck, FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { CiUser, CiMail, CiPhone } from 'react-icons/ci';
 import { RiMessage2Line } from 'react-icons/ri';
-import { FaUserDoctor } from "react-icons/fa6";
+
 
 const Main = () => {
   const [content, setContent] = useState(null);
@@ -487,9 +487,8 @@ const Main = () => {
       </section>
 
       {/* why choose us */}
-
-     <section className="why-choose-us-area">
-    <div className="container-why-choose-us">
+      <section className="why-choose-us-area">
+        <div className="container-why-choose-us">
           <div className="why-choose-us-text">
             <div className="why-choose-us-text-content">
               <span className="why-choose-us-text-title">{content.sectionTitle}</span>
@@ -498,7 +497,7 @@ const Main = () => {
                 {content.features.map((feature, index) => (
                   <li key={index}>
                     <div className="feature">
-                      <FaUserDoctor />
+                      <img src={feature.image} alt={feature.title} className='feature-img' /> {/* Use feature image */}
                       <span>{feature.title}</span>
                       <p>{feature.description}</p>
                     </div>
@@ -506,14 +505,14 @@ const Main = () => {
                 ))}
               </ul>
             </div>
-        </div>
-        <div className="why-choose-us-img">
-          <div className="why-choose-us-image">
-            <img src={content.image} alt="Why Choose Us" />
+          </div>
+          <div className="why-choose-us-img">
+            <div className="why-choose-us-image">
+              <img src={content.mainImage} alt="Why Choose Us" /> {/* Use main image */}
+            </div>
           </div>
         </div>
-    </div>
-  </section>
+      </section>
 
 
 

@@ -787,6 +787,13 @@ input[type="text"], input[type="email"], input[type="number"] {
   display: block;
 }
 
+.feature-img{
+  max-width: 40px;
+  background: white;
+  padding: 3px;
+  border-radius: 20px;
+}
+
 @media (max-width: 1200px) {
   .container-why-choose-us {
     flex-direction: column; 
