@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaPhone } from "react-icons/fa";
 import './Main.css';
+import CTAbg from "../../Assets/images/cta-bg.jpeg";
 
 import { FaCheck, FaArrowRight } from 'react-icons/fa';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
@@ -600,6 +602,17 @@ const Main = () => {
         </div>
       </section>
 
+
+      {/* CTA area */}
+      <section className='CTA-area' style={{ backgroundImage: `url(${CTAbg})` }}>
+        <div className='container-CTA'>
+          <div className="cta-content">
+            <h2>Instant Design Solution for your Digital Crowns</h2>
+            <p>Get emergency assistance for Crowns/Bridges within 2 Hours.</p>
+            <a href="#/" className='call-us'><FaPhone />01294009388</a>
+          </div>
+        </div>
+      </section>
 
 
         </>
