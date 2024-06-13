@@ -37,6 +37,8 @@ const App = () => {
           path="/*"
           element={<MainLayout><Main /></MainLayout>}
         />
+
+          
       </Routes>
     </Router>
   );

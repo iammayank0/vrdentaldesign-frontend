@@ -730,20 +730,26 @@ input[type="text"], input[type="email"], input[type="number"] {
 .why-choose-us-text {
   background-image: url(../../Assets/images/feedback-bg.jpg);
   background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
-  flex: 0 0 50%; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 211px;
+    padding-bottom: 100px;
+    padding-left: 95px;
+    padding-right: 42px;
+    flex: 0 0 50%;
 }
 
 .why-choose-us-img {
   flex: 0 0 50%; 
 }
 
-
+.why-choose-us-icon{
+  padding-top: 17px;
+  display: block;
+}
+.why-choose-us-para{
+  padding-top: 10px;  
+}
 .why-choose-us-text-title {
   display: block;
   color: #ffffff;
@@ -757,7 +763,7 @@ input[type="text"], input[type="email"], input[type="number"] {
 .why-choose-us-text-content h2 {
   margin-bottom: 14px;
   color: #ffffff;
-  line-height: 1.3;
+  line-height: 1.3;   
   font-size: 42px;
   font-weight: 400;
 }

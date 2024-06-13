@@ -519,8 +519,8 @@ const Main = () => {
                   <li key={index}>
                     <div className="feature">
                       <img src={feature.image} alt={feature.title} className='feature-img' /> {/* Use feature image */}
-                      <span>{feature.title}</span>
-                      <p>{feature.description}</p>
+                      <span className='why-choose-us-icon'>{feature.title}</span>
+                      <p className='why-choose-us-para'>{feature.description}</p>
                     </div>
                   </li>
                 ))}
