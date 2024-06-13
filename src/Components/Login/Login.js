@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordFill } from "react-icons/ri";
-
 import './Login.css';
+import Swal from 'sweetalert2';
 
 const Login = ({ setLoggedIn }) => {
   const [formData, setFormData] = useState({
@@ -25,8 +25,17 @@ const Login = ({ setLoggedIn }) => {
       // Simulate a successful login
       localStorage.setItem('token', 'fakeToken'); // Dummy token
       setLoggedIn(true);
+      Swal.fire({
+        icon: "success",
+        title: "You have successfully logged in",
+      });
       navigate('/admin');
     } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Login failed: Invalid credentials",
+      });
       console.error('Login failed: Invalid credentials');
     }
   };

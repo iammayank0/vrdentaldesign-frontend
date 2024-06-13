@@ -11,12 +11,12 @@ const AdminPanel = () => {
   return (
     <div>
       <NavPanel />
-      <SlidePanel/>
+      {/* <SlidePanel/>
       <AboutPanel />
       <FactPanel />
       <ServicePanel />
       <WhyChooseUsPanel />
-      <DoctorPanel />
+      <DoctorPanel /> */}
     </div>
   )
 }
