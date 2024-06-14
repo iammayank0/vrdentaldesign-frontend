@@ -6,17 +6,19 @@ import FactPanel from './Subpanel/FactPanel';
 import ServicePanel from './Subpanel/ServicePanel';
 import WhyChooseUsPanel from './Subpanel/WhychooseusPanel';
 import DoctorPanel from './Subpanel/DoctorPanel';
+import CTAPanel from './Subpanel/CTApanel';
 
 const AdminPanel = () => {
   return (
     <div>
       <NavPanel />
-      {/* <SlidePanel/>
+      <SlidePanel/>
       <AboutPanel />
       <FactPanel />
       <ServicePanel />
       <WhyChooseUsPanel />
-      <DoctorPanel /> */}
+      <DoctorPanel />
+      <CTAPanel />
     </div>
   )
 }
