@@ -479,7 +479,7 @@ input[type="text"], input[type="email"], input[type="number"] {
     flex-direction: column;
   }
 
-  .slider-image {
+  .content-image {
     width: 100%;
     height: auto;
   }
@@ -508,7 +508,7 @@ input[type="text"], input[type="email"], input[type="number"] {
     padding-top: 20px;
   }
 
-  .slider-image {
+  .content-image {
     width: 100%;
     height: auto;  /* Your styles for slider-image here */
   }
@@ -537,7 +537,7 @@ input[type="text"], input[type="email"], input[type="number"] {
     flex-direction: column; /* Your styles for container-about here */
   }
 
-  .slider-image {
+  .content-image {
     width: 100%;
     height: auto;  /* Your styles for slider-image here */
   }
@@ -799,6 +799,15 @@ input[type="text"], input[type="email"], input[type="number"] {
   padding: 3px;
   border-radius: 20px;
 }
+
+.feature span{
+  display: block;
+  padding-top: 19px;
+}
+
+  .feature p {
+    padding-top: 11px;
+  }
 
 @media (max-width: 1200px) {
   .container-why-choose-us {
@@ -1080,6 +1089,11 @@ input[type="text"], input[type="email"], input[type="number"] {
 .blog-text p{
   color: #6d7a8c;
 }
+
+/* .post-image img{
+   width: 200px;
+   height:100px;
+} */
 .date{
   color: #1d3557;
 }
