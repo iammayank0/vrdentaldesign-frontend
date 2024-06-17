@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
-import logo from '../../Assets/images/logo.png';
 import { FaPhone } from 'react-icons/fa';
 import { SiMinutemailer } from 'react-icons/si';
 import { IoMenuSharp, IoClose } from 'react-icons/io5';
@@ -18,6 +17,7 @@ const Navbar = () => {
   const [navbarItems, setNavbarItems] = useState([]);
   const [contactInfo, setContactInfo] = useState({});
   const [socialLinks, setSocialLinks] = useState([]);
+  const [logoUrl, setLogoUrl] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -33,9 +33,13 @@ const Navbar = () => {
         const socialLinksResponse = await fetch('http://localhost:5000/api/social-links');
         const socialLinksData = await socialLinksResponse.json();
 
+        const logoResponse = await fetch('http://localhost:5000/api/logo');
+        const logoData = await logoResponse.json();
+
         setNavbarItems(navbarItemsData);
         setContactInfo(contactInfoData);
         setSocialLinks(socialLinksData);
+        setLogoUrl(logoData.logoUrl); 
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Error loading data');
@@ -79,7 +83,7 @@ const Navbar = () => {
       </div>
       <nav className='main-nav'>
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <img src={logoUrl} alt="logo" />
         </div>
         <div className={`menu-link ${menuOpen ? 'hidden' : ''}`}>
           <ul>
