@@ -99,3 +99,7 @@ li {
 .navbar-item-list tr:hover {
   background-color: #e0e0e0;
 }
+
+.adminPanel{
+  background-color: blue;
+}

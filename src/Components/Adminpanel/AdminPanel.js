@@ -10,7 +10,7 @@ import CTAPanel from './Subpanel/CTApanel';
 
 const AdminPanel = () => {
   return (
-    <div>
+    <div className='adminPanel'>
       <NavPanel />
       <SlidePanel/>
       <AboutPanel />

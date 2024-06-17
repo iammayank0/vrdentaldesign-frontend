@@ -18,7 +18,7 @@ const CTAPanel = () => {
 
   const fetchCTAContent = async () => {
     try {
-      const response = await axios.get('/CTA');
+      const response = await axios.get('http://localhost:5000/api/CTA');
       if (response.data.length > 0) {
         setCtaContent(response.data[0]);
       }
@@ -59,7 +59,7 @@ const CTAPanel = () => {
         formDataToSend.append('CTAbg', formData.CTAbg);
       }
 
-      const response = await axios.put(`/CTA/${ctaContent._id}`, formDataToSend, {
+      const response = await axios.put(`http://localhost:5000/api/CTA/${ctaContent._id}`, formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

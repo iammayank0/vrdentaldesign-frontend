@@ -1,4 +1,3 @@
-// frontend/src/components/Navbar.js
 import React, { useState, useEffect } from 'react';
 import './Navbar.css';
 import logo from '../../Assets/images/logo.png';
@@ -19,46 +18,46 @@ const Navbar = () => {
   const [navbarItems, setNavbarItems] = useState([]);
   const [contactInfo, setContactInfo] = useState({});
   const [socialLinks, setSocialLinks] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchNavbarItems();
-    fetchContactInfo();
-    fetchSocialLinks();
+    const fetchData = async () => {
+      try {
+        const navbarItemsResponse = await fetch('http://localhost:5000/api/navbar');
+        const navbarItemsData = await navbarItemsResponse.json();
+
+        const contactInfoResponse = await fetch('http://localhost:5000/api/contact-info');
+        const contactInfoData = await contactInfoResponse.json();
+
+        const socialLinksResponse = await fetch('http://localhost:5000/api/social-links');
+        const socialLinksData = await socialLinksResponse.json();
+
+        setNavbarItems(navbarItemsData);
+        setContactInfo(contactInfoData);
+        setSocialLinks(socialLinksData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Error loading data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
-
-  const fetchNavbarItems = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/navbar');
-      const data = await response.json();
-      setNavbarItems(data);
-    } catch (error) {
-      console.error('Error fetching navbar items:', error);
-    }
-  };
-
-  const fetchContactInfo = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/contact-info');
-      const data = await response.json();
-      setContactInfo(data);
-    } catch (error) {
-      console.error('Error fetching contact info:', error);
-    }
-  };
-
-  const fetchSocialLinks = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/social-links');
-      const data = await response.json();
-      setSocialLinks(data);
-    } catch (error) {
-      console.error('Error fetching social links:', error);
-    }
-  };
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className="header">
@@ -71,7 +70,7 @@ const Navbar = () => {
           {socialLinks.map((link, index) => {
             const IconComponent = iconMap[link.icon];
             return (
-              <a key={index} href={link.url}>
+              <a key={index} href={link.url} target="_blank" rel="noopener noreferrer">
                 <IconComponent className='icon' />
               </a>
             );
