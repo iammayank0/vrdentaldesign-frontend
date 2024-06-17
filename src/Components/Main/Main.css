@@ -1090,10 +1090,6 @@ input[type="text"], input[type="email"], input[type="number"] {
   color: #6d7a8c;
 }
 
-/* .post-image img{
-   width: 200px;
-   height:100px;
-} */
 .date{
   color: #1d3557;
 }
@@ -1102,9 +1098,28 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 
+.blog-text {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: 20px; 
+  text-align: center; 
+}
 
+.container-blog {
+  width: 100%;
+  max-width: 1200px; /* Adjust max-width as per your design */
+}
 
-
+.post-image img{
+  width:300px;
+  height:200px;
+}
+.single-blog-post{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
 
 
 /* Media queries */
