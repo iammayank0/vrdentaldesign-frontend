@@ -33,7 +33,7 @@ const Footer = () => {
                   {footerData.description.logo && <img src={footerData.description.logo} alt="footer-logo-img" />}
                   <p>{footerData.description.text}</p>
                 </div>
-                <ul className="footer-social">
+                <ul className="social">
                   <li><a href={footerData.socialLinks.facebook}><FaFacebook /></a></li>
                   <li><a href={footerData.socialLinks.twitter}><FaTwitter /> </a></li>
                   <li><a href={footerData.socialLinks.linkedin}><FaLinkedin /> </a></li>
@@ -52,18 +52,13 @@ const Footer = () => {
               <div className="single-footer-widget">
                 <h3>CONTACT INFO</h3>
                 <ul className="footer-contact-info">
-                  <li>
-                    <span>Location:</span>
-                    {footerData.contactInfo.location1}
-                  </li>
-                  <li>
-                    <span>Location:</span>
-                    {footerData.contactInfo.location2}
-                  </li>
-                  <li>
-                    <span>Phone:</span>
-                    {footerData.contactInfo.phone}
-                  </li>
+                  {footerData.contactInfo.map((info, index) => (
+                    <li key={index}>
+                      <span>Location:</span> {info.location}
+                      <br />
+                      <span>Phone:</span> {info.phone}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
