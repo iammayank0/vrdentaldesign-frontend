@@ -1131,7 +1131,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 1700px;
   }
 }
@@ -1143,7 +1144,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 1500px;
   }
 
@@ -1169,7 +1171,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 1300px;
   }
 }
@@ -1181,7 +1184,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 1100px;
   }
 
@@ -1199,7 +1203,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 800px;
   }
 
@@ -1217,7 +1222,8 @@ input[type="text"], input[type="email"], input[type="number"] {
   .container-fact,
   .container-services,
   .container-doctor,
-  .container-CTA {
+  .container-CTA,
+  .container-blog {
     max-width: 650px;
   }
 
