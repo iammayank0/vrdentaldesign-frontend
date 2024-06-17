@@ -13,6 +13,7 @@ const BlogPanel = () => {
   const [editBlogDate, setEditBlogDate] = useState('');
   const [editBlogLink, setEditBlogLink] = useState('');
   const [editBlogImage, setEditBlogImage] = useState(null);
+  const [editBlogImageUrl, setEditBlogImageUrl] = useState('');
   const [selectedBlogTextId, setSelectedBlogTextId] = useState(null);
   const [editBlogTextTitle, setEditBlogTextTitle] = useState('');
   const [editBlogTextHeading, setEditBlogTextHeading] = useState('');
@@ -87,6 +88,7 @@ const BlogPanel = () => {
       setEditBlogDate('');
       setEditBlogLink('');
       setEditBlogImage(null);
+      setEditBlogImageUrl('');
     } catch (error) {
       console.error('Failed to update blog:', error);
     }
@@ -129,10 +131,12 @@ const BlogPanel = () => {
       setEditBlogTitle(selectedBlog.BlogTitle);
       setEditBlogDate(selectedBlog.date);
       setEditBlogLink(selectedBlog.link);
+      setEditBlogImageUrl(selectedBlog.image);
     } else {
       setEditBlogTitle('');
       setEditBlogDate('');
       setEditBlogLink('');
+      setEditBlogImageUrl('');
     }
   };
 
@@ -173,6 +177,12 @@ const BlogPanel = () => {
           <input type="text" value={editBlogDate} onChange={(e) => setEditBlogDate(e.target.value)} />
           <label>Link:</label>
           <input type="text" value={editBlogLink} onChange={(e) => setEditBlogLink(e.target.value)} />
+          {editBlogImageUrl && (
+            <div>
+              <label>Current Image:</label>
+              <img src={editBlogImageUrl} alt="Current Blog" style={{ width: '100px', height: '100px' }} />
+            </div>
+          )}
           <label>Image:</label>
           <input type="file" onChange={(e) => setEditBlogImage(e.target.files[0])} />
           <button onClick={handleBlogEdit}>Save Changes</button>
@@ -199,7 +209,9 @@ const BlogPanel = () => {
           <label>Description:</label>
           <textarea value={selectedBlogTextId === blogText._id ? editBlogTextDescription : blogText.description} onChange={(e) => setEditBlogTextDescription(e.target.value)} />
           <button onClick={() => handleBlogTextSelect(blogText)}>Edit</button>
-          {selectedBlogTextId === blogText._id && <button onClick={handleBlogTextEdit}>Save Changes</button>}
+          {selectedBlogTextId === blogText._id && (
+            <button onClick={handleBlogTextEdit}>Save Changes</button>
+          )}
         </div>
       ))}
     </div>
