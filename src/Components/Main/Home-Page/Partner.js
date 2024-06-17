@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../Main.css';
 
 const Partner = () => {
-    const [partners, setPartners] = useState([]);
+  const [partners, setPartners] = useState([]);
   const [numVisible, setNumVisible] = useState(5);
   const [currentIndex, setCurrentIndex] = useState(0);
 

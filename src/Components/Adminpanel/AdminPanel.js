@@ -7,6 +7,8 @@ import ServicePanel from './Subpanel/ServicePanel';
 import WhyChooseUsPanel from './Subpanel/WhychooseusPanel';
 import DoctorPanel from './Subpanel/DoctorPanel';
 import CTAPanel from './Subpanel/CTApanel';
+import PartnerPanel from './Subpanel/PartnerPanel';
+import BlogPanel from './Subpanel/BlogPanel';
 
 const AdminPanel = () => {
   return (
@@ -19,6 +21,8 @@ const AdminPanel = () => {
       <WhyChooseUsPanel />
       <DoctorPanel />
       <CTAPanel />
+      <PartnerPanel />
+      <BlogPanel />
     </div>
   )
 }

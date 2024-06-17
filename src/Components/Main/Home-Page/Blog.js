@@ -45,7 +45,7 @@ const Blog = () => {
         <div className='container-blog'>
           <div className="blog-text">
             <span className='blog-title'>{blogText.title}</span>
-            <h2>{blogText.header}</h2>
+            <h2>{blogText.heading}</h2>
             <p>{blogText.description}</p>
           </div>
           <div className="blog">
@@ -60,7 +60,7 @@ const Blog = () => {
                     </div>
                   </div>
                   <div className="post-content">
-                    <h3>{blog.title}</h3>
+                    <h3>{blog.BlogTitle}</h3>
                     <a href={blog.link} className='blog-read-more-btn'>READ MORE<IoIosArrowForward /></a>
                   </div>
                 </div>
