@@ -1098,29 +1098,96 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 
-.blog-text {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  padding: 20px; 
-  text-align: center; 
+.blog-area {
+  padding: 50px 0; /* Adjust padding as needed */
+  background-color: #f9f9f9; /* Example background color */
+  text-align: center; /* Center align text */
 }
 
 .container-blog {
-  width: 100%;
-  max-width: 1200px; /* Adjust max-width as per your design */
+  max-width: 1200px; /* Adjust maximum width */
+  margin: 0 auto; /* Center align container */
+  padding: 0 15px; /* Add padding for spacing */
 }
 
-.post-image img{
-  width:300px;
-  height:200px;
+.blog-text {
+  margin-bottom: 30px; /* Space between text and cards */
+  text-align: center; /* Align text left within .blog-text */
 }
-.single-blog-post{
+
+.blog {
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  flex-wrap: wrap;
+  justify-content: center; /* Center align blog cards */
 }
 
+.blog-card {
+  width: 300px; /* Adjust card width */
+  margin: 15px; /* Adjust margin between cards */
+  background-color: #fff; /* Card background color */
+  border: 1px solid #ddd; /* Example border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example box shadow */
+}
+
+.single-blog-post {
+  padding: 20px; /* Padding inside each card */
+}
+
+.post-image {
+  position: relative; /* Position for image and date */
+  overflow: hidden; /* Ensure image does not overflow */
+}
+
+.post-image img {
+  width: 100%; /* Ensure image fills its container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.date {
+  position: absolute;
+  bottom:4px;
+  right: 97px;
+  opacity: 0.8;
+  background-color: #333; /* Date background color */
+  color: #fff; /* Date text color */
+  padding: 5px 10px; /* Date padding */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Date font size */
+  display: flex;
+  align-items: center; /* Center align date content */
+}
+
+.post-content {
+  padding: 15px 20px; /* Padding for content */
+  text-align: left; /* Align content left */
+}
+
+h3 {
+  margin-top: 0; /* Remove default margin for heading */
+}
+
+.blog-read-more-btn {
+  display: inline-block; /* Display button inline */
+  padding: 8px 20px; /* Button padding */
+  background-color: #007bff; /* Button background color */
+  color: #fff; /* Button text color */
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.blog-read-more-btn:hover {
+  background-color: #0056b3; /* Button hover background color */
+}
+
+.post-content h3{
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .blog-card {
+    width: calc(50% - 30px); 
+  }
+}
 
 /* Media queries */
 
