@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Footer.css';
 import axios from 'axios'; 
-
 import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
-import { MdOutlineCopyright } from "react-icons/md";
+import {  MdOutlineCopyright } from "react-icons/md";
 
 const Footer = () => {
   const [footerData, setFooterData] = useState(null);
@@ -43,22 +42,23 @@ const Footer = () => {
               <div className="single-footer-widget">
                 <h3>QUICK LINKS</h3>
                 <ul className='footer-quick-links'>
-                  <li><a href={footerData.quickLinks.team}>TEAM</a></li>
-                  <li><a href={footerData.quickLinks.services}>SERVICES</a></li>
-                  <li><a href={footerData.quickLinks.about}>ABOUT</a></li>
-                  <li><a href={footerData.quickLinks.contact}>CONTACT</a></li>
+                  {footerData.quickLinks.map((link, index) => (
+                    <li key={index}><a href={link.url}>{link.text}</a></li>
+                  ))}
                 </ul>
               </div>
               <div className="single-footer-widget">
                 <h3>CONTACT INFO</h3>
                 <ul className="footer-contact-info">
-                  {footerData.contactInfo.map((info, index) => (
-                    <li key={index}>
-                      <span>Location:</span> {info.location}
-                      <br />
-                      <span>Phone:</span> {info.phone}
-                    </li>
-                  ))}
+                  <li>
+                    <span>Location:</span> {footerData.contactInfo.location1}
+                  </li>
+                  <li>
+                    <span>Location:</span> {footerData.contactInfo.location2}
+                  </li>
+                  <li>
+                    <span>Phone:</span> {footerData.contactInfo.phone}
+                  </li>
                 </ul>
               </div>
             </div>

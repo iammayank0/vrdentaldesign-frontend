@@ -8,7 +8,7 @@ const FooterPanel = () => {
     description: { logo: '', text: '' },
     socialLinks: { facebook: '', twitter: '', linkedin: '', instagram: '' },
     quickLinks: [{ text: '', url: '' }],
-    contactInfo: [{ location: '', phone: '' }],
+    contactInfo: { location1: '', location2: '', phone: '' }, // Updated contactInfo structure
     copyright: ''
   });
 
@@ -30,22 +30,10 @@ const FooterPanel = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const [parent, child] = name.split('.'); // Split nested field name
-
-    if (child) {
-      setFooterData({
-        ...footerData,
-        [parent]: {
-          ...footerData[parent],
-          [child]: value,
-        },
-      });
-    } else {
-      setFooterData({
-        ...footerData,
-        [name]: value,
-      });
-    }
+    setFooterData(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e) => {
@@ -154,22 +142,30 @@ const FooterPanel = () => {
         </div>
         <div>
           <label>Contact Info:</label>
-          {footerData.contactInfo.map((info, index) => (
-            <div key={index}>
-              <input
-                type="text"
-                name={`contactInfo[${index}].location`}
-                value={info.location}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name={`contactInfo[${index}].phone`}
-                value={info.phone}
-                onChange={handleChange}
-              />
-            </div>
-          ))}
+          <input
+            type="text"
+            name="contactInfo.location1"
+            value={footerData.contactInfo.location1}
+            onChange={handleChange}
+            placeholder="Location 1"
+            required
+          />
+          <input
+            type="text"
+            name="contactInfo.location2"
+            value={footerData.contactInfo.location2}
+            onChange={handleChange}
+            placeholder="Location 2"
+            required
+          />
+          <input
+            type="text"
+            name="contactInfo.phone"
+            value={footerData.contactInfo.phone}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            required
+          />
         </div>
         <div>
           <label>Copyright:</label>
