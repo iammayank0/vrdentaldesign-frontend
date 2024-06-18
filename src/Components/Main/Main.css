@@ -1077,117 +1077,115 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 
 /* Blog area */
-
-.blog-title{
-  color: #df3946;
-}
-
-.blog-text h2{
-  color: #1d3557;
-}
-
-.blog-text p{
-  color: #6d7a8c;
-}
-
-.date{
-  color: #1d3557;
-}
-.post-content h3{
-  color: #1d3557;
-}
-
-
 .blog-area {
-  padding: 50px 0; /* Adjust padding as needed */
+  padding: 40px 0;
   background-color: #f9f9f9; /* Example background color */
-  text-align: center; /* Center align text */
 }
 
 .container-blog {
-  max-width: 1200px; /* Adjust maximum width */
-  margin: 0 auto; /* Center align container */
-  padding: 0 15px; /* Add padding for spacing */
+  max-width: 1200px; /* Adjust based on your design */
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .blog-text {
-  margin-bottom: 30px; /* Space between text and cards */
-  text-align: center; /* Align text left within .blog-text */
+  text-align: center;
+  margin-bottom: 40px;
+  color: black;
+}
+
+.blog-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:brown ;
 }
 
 .blog {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Center align blog cards */
+  justify-content: space-between;
 }
 
 .blog-card {
-  width: 300px; /* Adjust card width */
-  margin: 15px; /* Adjust margin between cards */
-  background-color: #fff; /* Card background color */
-  border: 1px solid #ddd; /* Example border */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Example box shadow */
+  width: calc(33.33% - 20px); /* Adjust based on number of cards per row */
+  margin-bottom: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .blog-card {
+    width: calc(50% - 20px); /* Two cards per row on tablets */
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-card {
+    width: 100%; /* Full width on mobile */
+  }
 }
 
 .single-blog-post {
-  padding: 20px; /* Padding inside each card */
+  display: flex;
+  flex-direction: column;
 }
 
 .post-image {
-  position: relative; /* Position for image and date */
-  overflow: hidden; /* Ensure image does not overflow */
+  position: relative;
+  overflow: hidden;
 }
 
 .post-image img {
-  width: 100%; /* Ensure image fills its container */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-image:hover img {
+  transform: scale(1.1); /* Example hover effect */
 }
 
 .date {
   position: absolute;
-  bottom:4px;
-  right: 97px;
-  opacity: 0.8;
-  background-color: #333; /* Date background color */
-  color: #fff; /* Date text color */
-  padding: 5px 10px; /* Date padding */
-  border-radius: 5px; /* Rounded corners */
-  font-size: 14px; /* Date font size */
+  top: 10px;
+  left: 10px;
   display: flex;
-  align-items: center; /* Center align date content */
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.date svg {
+  margin-right: 5px;
 }
 
 .post-content {
-  padding: 15px 20px; /* Padding for content */
-  text-align: left; /* Align content left */
+  padding: 20px;
 }
 
 h3 {
-  margin-top: 0; /* Remove default margin for heading */
+  font-size: 20px;
+  margin-bottom: 10px;
+  color:black;
 }
 
 .blog-read-more-btn {
-  display: inline-block; /* Display button inline */
-  padding: 8px 20px; /* Button padding */
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
-  text-decoration: none; /* Remove underline */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth background transition */
+  display: inline-flex;
+  align-items: center;
+  color: #007bff; /* Adjust color as per your design */
+  text-decoration: none;
 }
 
-.blog-read-more-btn:hover {
-  background-color: #0056b3; /* Button hover background color */
+.blog-read-more-btn svg {
+  margin-left: 5px;
 }
 
-.post-content h3{
-  margin-top: 10px;
-}
-@media (max-width: 768px) {
-  .blog-card {
-    width: calc(50% - 30px); 
-  }
-}
 
 /* Media queries */
 
