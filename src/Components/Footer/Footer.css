@@ -38,7 +38,7 @@
     }
   }
 
-.single-footer-widget .logo p {
+.Description p {
     color: #ebe7e7;
     font-size: 15px;
     margin-bottom: 0;
@@ -46,8 +46,25 @@
 }
 
 
+  .footer-social{
+    padding-left: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+
+  .footer-social li{
+    display: inline-block;
+  }
+
   .footer-social li a{
-    text-decoration: none;
-    color: #333;
-    margin-right: 10px;
+    display: inline-block;
+    background-color: #df3946;
+    color: #ffffff;
+    width: 35px;
+    font-size: 16px;
+    height: 35px;
+    line-height: 36px;
+    border-radius: 50%;
+    text-align: center;
   }
