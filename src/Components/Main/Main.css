@@ -943,6 +943,11 @@ input[type="text"], input[type="email"], input[type="number"] {
   background-repeat: no-repeat;
   padding-top: 100px;
   padding-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .CTA-area::before {
@@ -958,10 +963,6 @@ input[type="text"], input[type="email"], input[type="number"] {
   background-size: cover;
   background-repeat: no-repeat;
   opacity: 0.7;
-}
-
-.container-CTA {
-  text-align: center !important;
 }
 
 .cta-content h2 {
@@ -994,42 +995,24 @@ input[type="text"], input[type="email"], input[type="number"] {
   text-decoration: none !important;
 }
 
-/* Styling for the container */
+/* Additional styles to ensure text alignment */
+.container-CTA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center !important;
+}
+
 .CTA-area {
   background-size: cover;
   background-attachment: fixed;
   /* padding: 20px;  */
   overflow-y: auto;
 }
-
-/* Styling for the content */
-.container p {
-  color: white; /* Example text color on the background image */
+.container-CTA p {
+  color: white;
 }
-
- .cta-content h2 {
-  color: #ffffff;
-  line-height: 1.3;
-  font-size: 42px;
-  font-weight: 400;
-}
-
-.cta-content p {
-  margin-top: 12px;
-  line-height: 1.8;
-  margin-bottom: 12px;
-  font-size: 16.5px;
-}
-
-.cta-content .call-us {
-  display: inline-block;
-  color: #ffffff;
-  margin-top: 10px;
-  font-size: 35px;
-  font-weight: 400;
-  font-family: "Anton", sans-serif;
-} 
-
 
 /* partner-area */
 
