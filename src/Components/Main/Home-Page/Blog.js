@@ -58,34 +58,14 @@ const Blog = () => {
                       <FaRegCalendarAlt />
                       {blog.date}
                     </div>
-                    <div className="post-content">
-                    <h3>{blog.BlogTitle}</h3>
-                    <a href={blog.link} className='blog-read-more-btn'>READ MORE<IoIosArrowForward /></a>
+                
                   </div>
-                  </div>
-                  <div className="post-image">
-                    <img src={blog.image} alt="blog-img" />
-                    <div className="date">
-                      <FaRegCalendarAlt />
-                      {blog.date}
-                    </div>
-                    <div className="post-content">
-                    <h3>{blog.BlogTitle}</h3>
-                    <a href={blog.link} className='blog-read-more-btn'>READ MORE<IoIosArrowForward /></a>
-                  </div>
-                  </div>
-                  <div className="post-image">
-                    <img src={blog.image} alt="blog-img" />
-                    <div className="date">
-                      <FaRegCalendarAlt />
-                      {blog.date}
-                    </div>
-                    <div className="post-content">
-                    <h3>{blog.BlogTitle}</h3>
-                    <a href={blog.link} className='blog-read-more-btn'>READ MORE<IoIosArrowForward /></a>
-                  </div>
-                  </div>
+                 
                 </div>
+                  <div className="post-content">
+                      <h3>{blog.BlogTitle}</h3>
+                      <a href={blog.link} className='blog-read-more-btn'>READ MORE<IoIosArrowForward /></a>
+                    </div>
               </div>
             ))}
           </div>

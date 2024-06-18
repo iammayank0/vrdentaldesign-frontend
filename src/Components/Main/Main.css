@@ -1077,48 +1077,113 @@ input[type="text"], input[type="email"], input[type="number"] {
 
 
 /* Blog area */
-
-.blog-title{
-  color: #df3946;
-}
-
-.blog-text h2{
-  color: #1d3557;
-}
-
-.blog-text p{
-  color: #6d7a8c;
-}
-
-.date{
-  color: #1d3557;
-}
-.post-content h3{
-  color: #1d3557;
-}
-
-
-.blog-text {
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-  padding: 20px; 
-  text-align: center; 
+.blog-area {
+  padding: 40px 0;
+  background-color: #f9f9f9; /* Example background color */
 }
 
 .container-blog {
-  width: 100%;
-  max-width: 1200px; /* Adjust max-width as per your design */
+  max-width: 1200px; /* Adjust based on your design */
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.post-image img{
-  width:300px;
-  height:200px;
+.blog-text {
+  text-align: center;
+  margin-bottom: 40px;
+  color: black;
 }
-.single-blog-post{
+
+.blog-title {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color:brown ;
+}
+
+.blog {
   display: flex;
-  justify-content: center;
-  /* align-items: center; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.blog-card {
+  width: calc(33.33% - 20px); /* Adjust based on number of cards per row */
+  margin-bottom: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .blog-card {
+    width: calc(50% - 20px); /* Two cards per row on tablets */
+  }
+}
+
+@media (max-width: 767px) {
+  .blog-card {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+.single-blog-post {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-image:hover img {
+  transform: scale(1.1); /* Example hover effect */
+}
+
+.date {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.date svg {
+  margin-right: 5px;
+}
+
+.post-content {
+  padding: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color:black;
+}
+
+.blog-read-more-btn {
+  display: inline-flex;
+  align-items: center;
+  color: #007bff; /* Adjust color as per your design */
+  text-decoration: none;
+}
+
+.blog-read-more-btn svg {
+  margin-left: 5px;
 }
 
 
