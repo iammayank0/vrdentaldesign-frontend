@@ -1079,11 +1079,11 @@ input[type="text"], input[type="email"], input[type="number"] {
 /* Blog area */
 .blog-area {
   padding: 40px 0;
-  background-color: #f9f9f9; /* Example background color */
+  background-color: #f9f9f9; 
 }
 
 .container-blog {
-  max-width: 1200px; /* Adjust based on your design */
+  max-width: 1200px; 
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1197,7 +1197,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 1700px;
   }
 }
@@ -1210,7 +1211,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 1500px;
   }
 
@@ -1237,7 +1239,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 1300px;
   }
 }
@@ -1250,7 +1253,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 1100px;
   }
 
@@ -1269,7 +1273,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 800px;
   }
 
@@ -1288,7 +1293,8 @@ h3 {
   .container-services,
   .container-doctor,
   .container-CTA,
-  .container-blog {
+  .container-blog,
+  .container-footer {
     max-width: 650px;
   }
 

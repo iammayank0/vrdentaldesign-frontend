@@ -15,7 +15,7 @@ li {
 .contact-info {
   height: 4rem;
   display: grid;
-  grid-template-columns: 20rem 2fr 2fr 19rem;
+  grid-template-columns: 7rem 2fr 2fr 7rem;
   align-items: center;
   font-size: 15px;
 }
@@ -63,7 +63,7 @@ li {
   .contact-info {
     height: 4rem;
     display: grid;
-    grid-template-columns: 20rem 2fr 2fr 19rem;
+    grid-template-columns: 7rem 2fr 2fr 7rem;
     align-items: center;
     font-size: 15px;
   }
@@ -73,7 +73,7 @@ li {
   width: 100%;
   height: 4.5rem;
   display: grid;
-  grid-template-columns:20rem 0.4fr 2fr 19rem;
+  grid-template-columns:7rem 0.4fr 2fr 7rem;
   align-items: center;
   background-color: rgba(250, 250, 250, 0.104);
 }

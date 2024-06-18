@@ -1,124 +1,144 @@
-// src/components/FooterPanel.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const FooterPanel = () => {
   const [footerData, setFooterData] = useState({
     _id: '',
-    description: { logo: '', text: '' },
-    socialLinks: { facebook: '', twitter: '', linkedin: '', instagram: '' },
-    quickLinks: [{ text: '', url: '' }],
-    contactInfo: { location1: '', location2: '', phone: '' }, // Updated contactInfo structure
-    copyright: ''
+    description: {
+      logo: '',
+      text: '',
+    },
+    socialLinks: {
+      facebook: '',
+      twitter: '',
+      linkedin: '',
+      instagram: '',
+    },
+    quickLinks: [
+      {
+        text: '',
+        url: '',
+      },
+    ],
+    contactInfo: {
+      location1: '',
+      location2: '',
+      phone: '',
+    },
+    copyright: '',
   });
 
-  const [logoFile, setLogoFile] = useState(null);
-
   useEffect(() => {
-    // Fetch the current footer data from the server
-    const fetchFooterData = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/footer');
-        setFooterData(response.data); // Set state with fetched data
-      } catch (error) {
-        console.error('Error fetching footer data:', error);
-      }
-    };
-
     fetchFooterData();
   }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFooterData(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const handleFileChange = (e) => {
-    setLogoFile(e.target.files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('logo', logoFile);
-    formData.append('text', footerData.description.text);
-    formData.append('socialLinks', JSON.stringify(footerData.socialLinks));
-    formData.append('quickLinks', JSON.stringify(footerData.quickLinks));
-    formData.append('contactInfo', JSON.stringify(footerData.contactInfo));
-    formData.append('copyright', footerData.copyright);
-
+  const fetchFooterData = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/footer/${footerData._id}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      setFooterData(response.data);
-      alert('Footer updated successfully');
+      const response = await axios.get('http://localhost:5000/api/footer');
+      if (response.data) {
+        setFooterData(response.data);
+      } else {
+        console.error('No footer data found');
+      }
     } catch (error) {
-      console.error('Error updating footer:', error);
-      alert('Failed to update footer');
+      console.error('Error fetching footer data:', error);
+    }
+  };
+
+  const handleChangeQuickLinks = (e, index, field) => {
+    const updatedQuickLinks = [...footerData.quickLinks];
+    updatedQuickLinks[index][field] = e.target.value;
+    setFooterData({
+      ...footerData,
+      quickLinks: updatedQuickLinks,
+    });
+  };
+
+  const handleAddQuickLink = () => {
+    setFooterData({
+      ...footerData,
+      quickLinks: [
+        ...footerData.quickLinks,
+        { text: '', url: '' },
+      ],
+    });
+  };
+
+  const handleRemoveQuickLink = (index) => {
+    const updatedQuickLinks = [...footerData.quickLinks];
+    updatedQuickLinks.splice(index, 1);
+    setFooterData({
+      ...footerData,
+      quickLinks: updatedQuickLinks,
+    });
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(`http://localhost:5000/api/footer/edit/${footerData._id}`, {
+        description: footerData.description,
+        socialLinks: footerData.socialLinks,
+        quickLinks: footerData.quickLinks, // Ensure quickLinks is in the correct format
+        contactInfo: footerData.contactInfo,
+        copyright: footerData.copyright,
+      });
+
+      if (response.status === 200) {
+        console.log('Footer data updated successfully.');
+        fetchFooterData(); // Refresh data after update
+      } else {
+        console.error('Update failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Update error:', error);
+      if (error.response) {
+        console.error('Server response:', error.response.data);
+      } else if (error.request) {
+        console.error('No response received:', error.request);
+      } else {
+        console.error('Request setup error:', error.message);
+      }
     }
   };
 
   return (
-    <div>
-      <h1>Edit Footer</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="footer-panel">
+      <h2>Edit Footer</h2>
+      <form onSubmit={handleFormSubmit}>
         <div>
-          <label>Logo:</label>
-          {footerData.description.logo && (
-            <img src={footerData.description.logo} alt="Logo" style={{ height: '50px' }} />
-          )}
-          <input type="file" onChange={handleFileChange} />
-        </div>
-        <div>
-          <label>Text:</label>
+          <label>Description Text:</label>
           <input
             type="text"
-            name="description.text"
             value={footerData.description.text}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, description: { ...footerData.description, text: e.target.value } })}
           />
         </div>
         <div>
-          <label>Facebook:</label>
+          <label>Social Links:</label>
           <input
             type="text"
-            name="socialLinks.facebook"
             value={footerData.socialLinks.facebook}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, socialLinks: { ...footerData.socialLinks, facebook: e.target.value } })}
+            placeholder="Facebook"
           />
-        </div>
-        <div>
-          <label>Twitter:</label>
           <input
             type="text"
-            name="socialLinks.twitter"
             value={footerData.socialLinks.twitter}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, socialLinks: { ...footerData.socialLinks, twitter: e.target.value } })}
+            placeholder="Twitter"
           />
-        </div>
-        <div>
-          <label>LinkedIn:</label>
           <input
             type="text"
-            name="socialLinks.linkedin"
             value={footerData.socialLinks.linkedin}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, socialLinks: { ...footerData.socialLinks, linkedin: e.target.value } })}
+            placeholder="LinkedIn"
           />
-        </div>
-        <div>
-          <label>Instagram:</label>
           <input
             type="text"
-            name="socialLinks.instagram"
             value={footerData.socialLinks.instagram}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, socialLinks: { ...footerData.socialLinks, instagram: e.target.value } })}
+            placeholder="Instagram"
           />
         </div>
         <div>
@@ -127,56 +147,53 @@ const FooterPanel = () => {
             <div key={index}>
               <input
                 type="text"
-                name={`quickLinks[${index}].text`}
                 value={link.text}
-                onChange={handleChange}
+                onChange={(e) => handleChangeQuickLinks(e, index, 'text')}
+                placeholder="Text"
               />
               <input
                 type="text"
-                name={`quickLinks[${index}].url`}
                 value={link.url}
-                onChange={handleChange}
+                onChange={(e) => handleChangeQuickLinks(e, index, 'url')}
+                placeholder="URL"
               />
+              {index > 0 && (
+                <button type="button" onClick={() => handleRemoveQuickLink(index)}>Remove</button>
+              )}
             </div>
           ))}
+          <button type="button" onClick={handleAddQuickLink}>Add Quick Link</button>
         </div>
         <div>
           <label>Contact Info:</label>
           <input
             type="text"
-            name="contactInfo.location1"
             value={footerData.contactInfo.location1}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, contactInfo: { ...footerData.contactInfo, location1: e.target.value } })}
             placeholder="Location 1"
-            required
           />
           <input
             type="text"
-            name="contactInfo.location2"
             value={footerData.contactInfo.location2}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, contactInfo: { ...footerData.contactInfo, location2: e.target.value } })}
             placeholder="Location 2"
-            required
           />
           <input
             type="text"
-            name="contactInfo.phone"
             value={footerData.contactInfo.phone}
-            onChange={handleChange}
-            placeholder="Phone Number"
-            required
+            onChange={(e) => setFooterData({ ...footerData, contactInfo: { ...footerData.contactInfo, phone: e.target.value } })}
+            placeholder="Phone"
           />
         </div>
         <div>
           <label>Copyright:</label>
           <input
             type="text"
-            name="copyright"
             value={footerData.copyright}
-            onChange={handleChange}
+            onChange={(e) => setFooterData({ ...footerData, copyright: e.target.value })}
           />
         </div>
-        <button type="submit">Save</button>
+        <button type="submit">Update Footer</button>
       </form>
     </div>
   );

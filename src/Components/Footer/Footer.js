@@ -32,7 +32,7 @@ const Footer = () => {
                   {footerData.description.logo && <img src={footerData.description.logo} alt="footer-logo-img" />}
                   <p>{footerData.description.text}</p>
                 </div>
-                <ul className="social">
+                <ul className="footer-social">
                   <li><a href={footerData.socialLinks.facebook}><FaFacebook /></a></li>
                   <li><a href={footerData.socialLinks.twitter}><FaTwitter /> </a></li>
                   <li><a href={footerData.socialLinks.linkedin}><FaLinkedin /> </a></li>
