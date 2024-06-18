@@ -60,6 +60,7 @@ li {
     font-size: 12px;
     justify-content: center; 
   }
+
   .contact-info {
     height: 4rem;
     display: grid;
@@ -73,7 +74,7 @@ li {
   width: 100%;
   height: 4.5rem;
   display: grid;
-  grid-template-columns:20rem 0.4fr 2fr 19rem;
+  grid-template-columns: 20rem 0.4fr 2fr 19rem;
   align-items: center;
   background-color: rgba(250, 250, 250, 0.104);
 }
@@ -115,7 +116,6 @@ li {
   color: #ddd;
 }
 
-
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -148,7 +148,6 @@ li {
   cursor: pointer;
 }
 
-
 @media (max-width: 330px) {
   .dropdown-menu {
     left: 130%;
@@ -161,10 +160,6 @@ li {
     left: 100%;
   }
 }
-
-
-
-
 
 .dropdown-menu li {
   width: 100%;
@@ -209,5 +204,64 @@ li {
 
   .menu-link {
     font-size: 15px;
+  }
+}
+
+/* Responsive for large screens */
+@media (min-width: 2560px) {
+  .contact-info {
+    grid-template-columns: 25rem 2fr 2fr 24rem;
+    font-size: 18px;
+  }
+
+  .main-nav {
+    grid-template-columns: 25rem 0.4fr 2fr 24rem;
+    height: 5.5rem;
+  }
+
+  .logo img {
+    width: 10rem; 
+    height: 5rem; 
+  }
+
+  .menu-link {
+    font-size: 20px;
+  }
+
+  .menu-link li {
+    padding: 16px;
+  }
+
+  .menu-link a {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 2559px) {
+  .contact-info {
+    grid-template-columns: 22rem 2fr 2fr 21rem;
+    font-size: 17px;
+  }
+
+  .main-nav {
+    grid-template-columns: 22rem 0.4fr 2fr 21rem;
+    height: 5rem;
+  }
+
+  .logo img {
+    width: 9rem; 
+    height: 4.5rem; 
+  }
+
+  .menu-link {
+    font-size: 18px;
+  }
+
+  .menu-link li {
+    padding: 14px;
+  }
+
+  .menu-link a {
+    font-size: 18px;
   }
 }
